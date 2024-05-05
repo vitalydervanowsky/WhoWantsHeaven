@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tex"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/heaven2"
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
+
+
+    <LinearLayout
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/height3"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/Layout1"
+            android:layout_width="match_parent"
+            android:layout_height="666dp"
+            android:orientation="vertical"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/transp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_horizontal"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="66dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"></LinearLayout>
+
+            <Button
+                android:id="@+id/buttonChage"
+                android:layout_width="68dp"
+                android:layout_height="53dp"
+                android:layout_weight="1"
+                android:background="@drawable/compass" />
+
+            <Button
+                android:id="@+id/button50"
+                android:layout_width="78dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/binoculars" />
+
+            <Button
+                android:id="@+id/buttonAdvice"
+                android:layout_width="64dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/carlo" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ViewQuetion"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:background="#00F6E7E7"
+            android:gravity="center|center_horizontal"
+            android:text="Хто хоча на неба?"
+            android:textColor="#ECE1E2"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonAnswer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/romb"
+                android:text="Начать взлет"
+                android:textColor="#F8F6F6"
+                android:textSize="16sp"
+                android:textStyle="normal|bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonAnswer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/romb"
+                android:text="Оставить отзыв"
+                android:textColor="#F1F1ED"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonAnswer3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/romb"
+                android:text="Выйти"
+                android:textColor="#F8F6F6"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonAnswer4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/romb"
+                android:textColor="#F1F1ED"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/ViewStep"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_horizontal"
+            android:textColor="#232323"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
