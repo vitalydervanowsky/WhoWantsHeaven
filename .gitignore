@@ -1,4 +1,10 @@
 *.iml
+*.png
+*.docx
+*.xlsx
+*.pptx
+*.mxl
+*.epf
 .gradle
 /local.properties
 /.idea/caches
@@ -7,6 +13,15 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea/.name
+/.idea/vcs.xml
+/.idea/compiler.xml
+/.idea/other.xml
+/.idea/migrations.xml
+/.idea/deploymentTargetDropDown.xml
+/.idea/deploymentTargetSelector.xml
+/app/debug
+/app/release
 .DS_Store
 /build
 /captures
