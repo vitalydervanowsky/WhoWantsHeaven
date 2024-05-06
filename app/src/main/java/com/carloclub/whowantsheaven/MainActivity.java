@@ -119,7 +119,9 @@ public class MainActivity extends AppCompatActivity {
         buttonAdvice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showAdvice(CurrentQuestion.Hint);
+                if (CurrentQuestion != null &&  CurrentQuestion.Hint != null) {
+                    showAdvice(CurrentQuestion.Hint);
+                }
             }
         });
 
