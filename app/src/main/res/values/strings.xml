@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Хто хоча на Неба</string>
+    <string name="option1_label">А. %s</string>
+    <string name="option2_label">Б. %s</string>
+    <string name="option3_label">В. %s</string>
+    <string name="option4_label">Г. %s</string>
+    <string name="step_label">%d/%d</string>
+    <string name="game_over">GAME OVER</string>
+    <string name="congratulations">Поздравляем с победой!!!</string>
 </resources>

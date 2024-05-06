@@ -2,23 +2,32 @@ package com.carloclub.whowantsheaven;
 
 public class Question {
 
-    String TextQuestion;
-    String Answer1;
-    String Answer2;
-    String Answer3;
-    String Answer4;
-    int TrueAnswer;
-    String Hint;
+    String question;
+    String answer1;
+    String answer2;
+    String answer3;
+    String answer4;
+    int trueAnswer;
+    String hint;
     int id;
 
-    public Question (String Q, String A1, String A2, String A3, String A4, int TA, String H, int ID) {
-        TextQuestion = Q;
-        Answer1 = A1;
-        Answer2 = A2;
-        Answer3 = A3;
-        Answer4 = A4;
-        TrueAnswer = TA;
-        Hint = H;
-        id = ID;
+    public Question(
+            String question,
+            String answer1,
+            String answer2,
+            String answer3,
+            String answer4,
+            int trueAnswer,
+            String hint,
+            int id
+    ) {
+        this.question = question;
+        this.answer1 = answer1;
+        this.answer2 = answer2;
+        this.answer3 = answer3;
+        this.answer4 = answer4;
+        this.trueAnswer = trueAnswer;
+        this.hint = hint;
+        this.id = id;
     }
 }
