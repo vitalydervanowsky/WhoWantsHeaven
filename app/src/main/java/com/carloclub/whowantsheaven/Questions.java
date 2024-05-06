@@ -14,21 +14,21 @@ public class Questions {
         createQuestions();
     }
 
-    public Question getQuestion(int Lev, String Lang) {
+    public Question getQuestion(int level, String language) {
         Random random = new Random();
-        int num = random.nextInt(N);
-        if (Lang.equals(Constants.LANG_BY)) {
-            return byQuestions[Lev - 1][num];
+        int index = random.nextInt(N);
+        if (language.equals(Constants.LANG_BY)) {
+            return byQuestions[level - 1][index];
         } else {
-            return ruQuestions[Lev - 1][num];
+            return ruQuestions[level - 1][index];
         }
     }
 
-    public Question getQuestion(int Lev, String Lang, int num) {
-        if (Lang.equals(Constants.LANG_BY)) {
-            return byQuestions[Lev - 1][num];
+    public Question getQuestion(int level, String language, int index) {
+        if (language.equals(Constants.LANG_BY)) {
+            return byQuestions[level - 1][index];
         } else {
-            return ruQuestions[Lev - 1][num];
+            return ruQuestions[level - 1][index];
         }
     }
 
