@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">Хто хоча на Неба</string>
+    <string name="app_name">Хто хоча на неба?</string>
+    <string name="start_button">Начать взлет</string>
+    <string name="write_review_button">Оставить отзыв</string>
+    <string name="exit_button">Выйти</string>
     <string name="option1_label">А. %s</string>
     <string name="option2_label">Б. %s</string>
     <string name="option3_label">В. %s</string>

@@ -2,13 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tex"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/heaven2"
-    android:orientation="horizontal"
-    tools:context=".MainActivity">
-
+    android:orientation="horizontal">
 
     <LinearLayout
         android:layout_width="60dp"
@@ -43,126 +40,92 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="66dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:orientation="horizontal" />
 
             <Button
                 android:id="@+id/buttonChange"
-                android:layout_width="68dp"
-                android:layout_height="53dp"
-                android:layout_weight="1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:background="@drawable/compass" />
 
             <Button
                 android:id="@+id/button50"
-                android:layout_width="78dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:background="@drawable/binoculars" />
 
             <Button
                 android:id="@+id/buttonAdvice"
                 android:layout_width="64dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="64dp"
                 android:background="@drawable/carlo" />
+
         </LinearLayout>
 
         <TextView
             android:id="@+id/questionTextView"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:background="#00F6E7E7"
             android:gravity="center|center_horizontal"
-            android:text="Хто хоча на неба?"
+            android:text="@string/app_name"
             android:textColor="#ECE1E2"
             android:textSize="40sp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/buttonAnswer1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/romb"
+            android:text="@string/start_button"
+            android:textColor="#F8F6F6"
+            android:textSize="16sp"
+            android:textStyle="normal|bold" />
 
-            <Button
-                android:id="@+id/buttonAnswer1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/romb"
-                android:text="Начать взлет"
-                android:textColor="#F8F6F6"
-                android:textSize="16sp"
-                android:textStyle="normal|bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/buttonAnswer2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/romb"
+            android:text="@string/write_review_button"
+            android:textColor="#F1F1ED"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/buttonAnswer2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/romb"
-                android:text="Оставить отзыв"
-                android:textColor="#F1F1ED"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/buttonAnswer3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:background="@drawable/romb"
+            android:text="@string/exit_button"
+            android:textColor="#F8F6F6"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/buttonAnswer3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/romb"
-                android:text="Выйти"
-                android:textColor="#F8F6F6"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
+        <Button
+            android:id="@+id/buttonAnswer4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/buttonAnswer4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/romb"
-                android:textColor="#F1F1ED"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+            android:background="@drawable/romb"
+            android:textColor="#F1F1ED"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/stepTextView"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+            android:paddingBottom="100dp"
             android:textColor="#232323"
             android:textSize="40sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="10/15" />
 
     </LinearLayout>
-
 
 </LinearLayout>
