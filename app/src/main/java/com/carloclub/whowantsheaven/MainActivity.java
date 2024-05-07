@@ -1,7 +1,9 @@
 package com.carloclub.whowantsheaven;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonAdvice;
     Button buttonChange;
     Button button50;
+    Button buttonRules;
     TextView questionTextView;
     TextView stepTextView;
     LinearLayout layout1;
@@ -39,136 +42,119 @@ public class MainActivity extends AppCompatActivity {
     public int heightInPixels;
     int stepInPixels = 250;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sharedPreferences = getSharedPreferences(Constants.SHARED_PREFERENCES, Context.MODE_PRIVATE);
 
         allQuestions = new Questions();
         questionTextView = findViewById(R.id.questionTextView);
         stepTextView = findViewById(R.id.stepTextView);
         layout1 = findViewById(R.id.layout1);
+        buttonAnswer1 = findViewById(R.id.buttonAnswer1);
+        buttonAnswer2 = findViewById(R.id.buttonAnswer2);
+        buttonAnswer3 = findViewById(R.id.buttonAnswer3);
+        buttonAnswer4 = findViewById(R.id.buttonAnswer4);
+        button50 = findViewById(R.id.button50);
+        buttonChange = findViewById(R.id.buttonChange);
+        buttonAdvice = findViewById(R.id.buttonAdvice);
+        buttonRules = findViewById(R.id.buttonRules);
+        initButtons();
 
         heightInPixels = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
         stepInPixels = Math.round(heightInPixels / 17);
-        buttonAnswer1 = findViewById(R.id.buttonAnswer1);
-        buttonAnswer1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isGameOver) {
-                    startGame();
-                } else {
-                    enterAnswer(1);
-                }
-            }
-        });
-
-        buttonAnswer2 = findViewById(R.id.buttonAnswer2);
-        buttonAnswer2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isGameOver) {
-                    writeReview();
-                } else {
-                    enterAnswer(2);
-                }
-            }
-        });
-
-        buttonAnswer3 = findViewById(R.id.buttonAnswer3);
-        buttonAnswer3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (isGameOver) {
-                    finish();
-                } else {
-                    enterAnswer(3);
-                }
-            }
-        });
-
-
-        buttonAnswer4 = findViewById(R.id.buttonAnswer4);
-        buttonAnswer4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enterAnswer(4);
-            }
-        });
-        buttonAnswer4.setVisibility(View.INVISIBLE);
-
-        button50 = findViewById(R.id.button50);
-        button50.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuestion != null) {
-                    if (currentQuestion.trueAnswer == 2) {
-                        buttonAnswer1.setVisibility(View.INVISIBLE);
-                    } else {
-                        buttonAnswer2.setVisibility(View.INVISIBLE);
-                    }
-                    if (currentQuestion.trueAnswer == 4) {
-                        buttonAnswer3.setVisibility(View.INVISIBLE);
-                    } else {
-                        buttonAnswer4.setVisibility(View.INVISIBLE);
-                    }
-                }
-            }
-        });
-
-        buttonChange = findViewById(R.id.buttonChange);
-        buttonChange.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (pause || isGameOver) return;
-                Question newQuestion = allQuestions.getQuestion(step, lang);
-                if (newQuestion.question.equals(currentQuestion.question)) {
-                    newQuestion = allQuestions.getQuestion(step, lang);
-                }
-                if (newQuestion.question.equals(currentQuestion.question)) {
-                    newQuestion = allQuestions.getQuestion(step, lang);
-                }
-                if (newQuestion.question.equals(currentQuestion.question)) {
-                    newQuestion = allQuestions.getQuestion(step, lang);
-                }
-                if (newQuestion.question.equals(currentQuestion.question)) {
-                    newQuestion = allQuestions.getQuestion(step, lang);
-                }
-                if (newQuestion.question.equals(currentQuestion.question)) {
-                    newQuestion = allQuestions.getQuestion(step, lang);
-                }
-                if (newQuestion.question.equals(currentQuestion.question)) {
-                    newQuestion = allQuestions.getQuestion(step, lang);
-                }
-                currentQuestion = newQuestion;
-                showQuestion();
-
-            }
-        });
-
-        buttonAdvice = findViewById(R.id.buttonAdvice);
-        buttonAdvice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currentQuestion != null && currentQuestion.hint != null) {
-                    showAdvice(currentQuestion.hint);
-                }
-            }
-        });
 
         int needH = heightInPixels - stepInPixels - Math.round(stepInPixels / 3 * 3);
         int WW = layout1.getLayoutParams().width;
         layout1.setLayoutParams(new LinearLayout.LayoutParams(WW, needH));
+        initTimer();
+    }
 
-
+    private void initTimer() {
         timer = new Timer();
         timerFly = new TimerFly();
         timer.schedule(timerFly, 100, 50);
     }
 
+    private void initButtons() {
+        buttonAnswer1.setText(R.string.start_button);
+        buttonAnswer1.setOnClickListener(v -> {
+            if (isGameOver) {
+                startGame();
+            } else {
+                enterAnswer(1);
+            }
+        });
+        buttonAnswer2.setText(R.string.write_review_button);
+        buttonAnswer2.setOnClickListener(v -> {
+            if (isGameOver) {
+                writeReview();
+            } else {
+                enterAnswer(2);
+            }
+        });
+        buttonAnswer3.setText(R.string.exit_button);
+        buttonAnswer3.setOnClickListener(v -> {
+            if (isGameOver) {
+                finish();
+            } else {
+                enterAnswer(3);
+            }
+        });
+        buttonAnswer4.setOnClickListener(v -> enterAnswer(4));
+        buttonAnswer4.setVisibility(View.INVISIBLE);
+        button50.setOnClickListener(v -> {
+            if (currentQuestion != null) {
+                if (currentQuestion.trueAnswer == 2) {
+                    buttonAnswer1.setVisibility(View.INVISIBLE);
+                } else {
+                    buttonAnswer2.setVisibility(View.INVISIBLE);
+                }
+                if (currentQuestion.trueAnswer == 4) {
+                    buttonAnswer3.setVisibility(View.INVISIBLE);
+                } else {
+                    buttonAnswer4.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+        buttonChange.setOnClickListener(v -> {
+            if (pause || isGameOver) return;
+            Question newQuestion = allQuestions.getQuestion(step, lang);
+            if (newQuestion.question.equals(currentQuestion.question)) {
+                newQuestion = allQuestions.getQuestion(step, lang);
+            }
+            if (newQuestion.question.equals(currentQuestion.question)) {
+                newQuestion = allQuestions.getQuestion(step, lang);
+            }
+            if (newQuestion.question.equals(currentQuestion.question)) {
+                newQuestion = allQuestions.getQuestion(step, lang);
+            }
+            if (newQuestion.question.equals(currentQuestion.question)) {
+                newQuestion = allQuestions.getQuestion(step, lang);
+            }
+            if (newQuestion.question.equals(currentQuestion.question)) {
+                newQuestion = allQuestions.getQuestion(step, lang);
+            }
+            if (newQuestion.question.equals(currentQuestion.question)) {
+                newQuestion = allQuestions.getQuestion(step, lang);
+            }
+            currentQuestion = newQuestion;
+            showQuestion();
+
+        });
+        buttonAdvice.setOnClickListener(v -> {
+            if (currentQuestion != null && currentQuestion.hint != null) {
+                showAdvice(currentQuestion.hint);
+            }
+        });
+        buttonRules.setOnClickListener(v -> showRules());
+    }
+
     private void writeReview() {
-//        showAdvice("Оставить отзыв можно будет после окончательной публикации приложения");
-        String packageName = getPackageName(); // getPackageName() from Context or Activity object
+        String packageName = getPackageName();
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
         } catch (android.content.ActivityNotFoundException anfe) {
@@ -177,6 +163,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
+        if (!sharedPreferences.getBoolean(Constants.SHOULD_SHOW_RULES_DIALOG, false)) {
+            showRules();
+            sharedPreferences
+                    .edit()
+                    .putBoolean(Constants.SHOULD_SHOW_RULES_DIALOG, true)
+                    .apply();
+        }
         step = 1;
         isGameOver = false;
         buttonAnswer4.setVisibility(View.VISIBLE);
@@ -184,9 +177,17 @@ public class MainActivity extends AppCompatActivity {
         showQuestion();
     }
 
+    private void showRules() {
+        Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.dialog_rules);
+        TextView textView = dialog.findViewById(R.id.rulesTextView);
+        textView.setText(R.string.game_over);// todo use another text
+        dialog.show();
+    }
+
     private void showAdvice(String text) {
         Dialog dialog = new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.advice);
+        dialog.setContentView(R.layout.dialog_advice);
         TextView textAdvice = dialog.findViewById(R.id.textAdvice);
         textAdvice.setText(text);
         dialog.show();
@@ -261,10 +262,12 @@ public class MainActivity extends AppCompatActivity {
                     if (isGameOver) {
                         questionTextView.setText(R.string.game_over);
                         step = 0;
+                        initButtons();
                     } else if (step == Constants.QUIZ_SIZE) {
                         isGameOver = true;
                         step++;
                         questionTextView.setText(R.string.congratulations);
+                        initButtons();
                     } else {
                         step++;
                         currentQuestion = allQuestions.getQuestion(step, lang);
