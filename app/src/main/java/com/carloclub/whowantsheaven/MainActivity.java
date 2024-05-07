@@ -1,13 +1,15 @@
 package com.carloclub.whowantsheaven;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isGameOver) {
-                    showAdvice("Оставить отзыв можно будет после окончательной публикации приложения");
+                    writeReview();
                 } else {
                     enterAnswer(2);
                 }
@@ -164,7 +166,17 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerFly, 100, 50);
     }
 
-    void startGame() {
+    private void writeReview() {
+//        showAdvice("Оставить отзыв можно будет после окончательной публикации приложения");
+        String packageName = getPackageName(); // getPackageName() from Context or Activity object
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
+        } catch (android.content.ActivityNotFoundException anfe) {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
+        }
+    }
+
+    private void startGame() {
         step = 1;
         isGameOver = false;
         buttonAnswer4.setVisibility(View.VISIBLE);
@@ -172,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
         showQuestion();
     }
 
-    void showAdvice(String text) {
+    private void showAdvice(String text) {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.advice);
         TextView textAdvice = dialog.findViewById(R.id.textAdvice);
@@ -180,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    void enterAnswer(int userAnswer) {
+    private void enterAnswer(int userAnswer) {
         if (pause || isGameOver) return;
 
         int trueAnswer = currentQuestion.trueAnswer;
@@ -213,10 +225,9 @@ public class MainActivity extends AppCompatActivity {
         timerDown = new TimerDown();
         pause = true;
         timer.schedule(timerDown, 1500, 1500);
-
     }
 
-    void showQuestion() {
+    private void showQuestion() {
         questionTextView.setText(currentQuestion.question);
         buttonAnswer1.setText(getString(R.string.option1_label, currentQuestion.answer1));
         buttonAnswer2.setText(getString(R.string.option2_label, currentQuestion.answer2));
