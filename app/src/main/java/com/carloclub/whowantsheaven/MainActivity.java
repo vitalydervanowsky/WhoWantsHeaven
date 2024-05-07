@@ -99,15 +99,17 @@ public class MainActivity extends AppCompatActivity {
         button50.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (currentQuestion.trueAnswer == 2) {
-                    buttonAnswer1.setVisibility(View.INVISIBLE);
-                } else {
-                    buttonAnswer2.setVisibility(View.INVISIBLE);
-                }
-                if (currentQuestion.trueAnswer == 4) {
-                    buttonAnswer3.setVisibility(View.INVISIBLE);
-                } else {
-                    buttonAnswer4.setVisibility(View.INVISIBLE);
+                if (currentQuestion != null) {
+                    if (currentQuestion.trueAnswer == 2) {
+                        buttonAnswer1.setVisibility(View.INVISIBLE);
+                    } else {
+                        buttonAnswer2.setVisibility(View.INVISIBLE);
+                    }
+                    if (currentQuestion.trueAnswer == 4) {
+                        buttonAnswer3.setVisibility(View.INVISIBLE);
+                    } else {
+                        buttonAnswer4.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
         });
