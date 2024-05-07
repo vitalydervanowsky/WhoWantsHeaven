@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     Questions allQuestions;
     Question currentQuestion;
     String lang = Constants.LANG_RU;
-    int heightInPixels;
+    public int heightInPixels;
     int stepInPixels = 250;
 
     @Override
