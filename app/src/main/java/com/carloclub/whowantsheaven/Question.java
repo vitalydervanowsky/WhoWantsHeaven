@@ -9,6 +9,7 @@ public class Question {
     String answer4;
     int trueAnswer;
     String hint;
+    String hintAI;
     int id;
 
     public Question(
@@ -19,6 +20,7 @@ public class Question {
             String answer4,
             int trueAnswer,
             String hint,
+            String hintAI,
             int id
     ) {
         this.question = question;
@@ -28,6 +30,7 @@ public class Question {
         this.answer4 = answer4;
         this.trueAnswer = trueAnswer;
         this.hint = hint;
+        this.hintAI = hintAI;
         this.id = id;
     }
 }

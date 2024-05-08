@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,8 +43,14 @@ public class MainActivity extends AppCompatActivity {
     Question currentQuestion;
     String lang = Constants.LANG_RU;
     int distanceBetweenLines = 0;
-
+    Dialog dialog;
+    Dialog dialogAI;
+    Button buttonThank;
     SharedPreferences sharedPreferences;
+
+    boolean usedAdvise = false;
+    boolean usedAI = false;
+    Button buttonAI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
         buttonChange = findViewById(R.id.buttonChange);
         buttonAdvice = findViewById(R.id.buttonAdvice);
         buttonRules = findViewById(R.id.buttonRules);
+        dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.dialog_advice);
+        buttonThank = dialog.findViewById(R.id.buttonThank);
+        dialogAI = new Dialog(MainActivity.this);
+        dialogAI.setContentView(R.layout.dialog_ai);
+
+        buttonAI = findViewById(R.id.buttonAI);
         initButtons();
         timer = new Timer();
     }
@@ -114,6 +129,10 @@ public class MainActivity extends AppCompatActivity {
         });
         buttonChange.setOnClickListener(v -> {
             if (pause || isGameOver) return;
+            buttonAnswer1.setVisibility(View.VISIBLE);
+            buttonAnswer2.setVisibility(View.VISIBLE);
+            buttonAnswer3.setVisibility(View.VISIBLE);
+            buttonAnswer4.setVisibility(View.VISIBLE);
             Question newQuestion = allQuestions.getQuestion(step, lang);
             if (newQuestion.question.equals(currentQuestion.question)) {
                 newQuestion = allQuestions.getQuestion(step, lang);
@@ -142,7 +161,16 @@ public class MainActivity extends AppCompatActivity {
                 showAdvice(currentQuestion.hint);
             }
         });
+        buttonAI.setOnClickListener(v -> {
+            if (currentQuestion != null && currentQuestion.hint != null) {
+                showAdviceAI(currentQuestion.hintAI);
+            }
+        });
         buttonRules.setOnClickListener(v -> showRules());
+
+        buttonThank.setOnClickListener(v -> {
+            dialog.hide();
+        });
     }
 
     private void writeReview() {
@@ -155,6 +183,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
+        usedAdvise = false;
+        usedAI = false;
+        buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.ai));
         moveImageView(step);
         if (!sharedPreferences.getBoolean(Constants.SHOULD_SHOW_RULES_DIALOG, false)) {
             showRules();
@@ -176,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
         }
         imageView.animate()
                 .translationY(distanceBetweenLines * position)
-                .setDuration(1000)
+                .setDuration(1800)
                 .start();
     }
 
@@ -188,12 +219,24 @@ public class MainActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    private void showAdviceAI(String text) {
+        if (usedAI) return;
+        //Dialog dialog = new Dialog(MainActivity.this);
+        //dialog.setContentView(R.layout.dialog_advice);
+        TextView textAdvice = dialogAI.findViewById(R.id.textAdvice);
+        textAdvice.setText(text);
+        dialogAI.show();
+        usedAI = true;
+        buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.ai_x));
+    }
     private void showAdvice(String text) {
-        Dialog dialog = new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.dialog_advice);
+        if (usedAdvise) return;
+        //Dialog dialog = new Dialog(MainActivity.this);
+        //dialog.setContentView(R.layout.dialog_advice);
         TextView textAdvice = dialog.findViewById(R.id.textAdvice);
         textAdvice.setText(text);
         dialog.show();
+        usedAdvise = true;
     }
 
     private void enterAnswer(int userAnswer) {
@@ -229,6 +272,8 @@ public class MainActivity extends AppCompatActivity {
         timerDown = new TimerDown();
         pause = true;
         timer.schedule(timerDown, 1500, 1500);
+        if (isGameOver) step=0;
+        moveImageView(step);
     }
 
     private void showQuestion() {
@@ -269,7 +314,7 @@ public class MainActivity extends AppCompatActivity {
                     questionTextView.setText(R.string.congratulations);
                     initButtons();
                 } else {
-                    moveImageView(step);
+                    //moveImageView(step);
                     step++;
                     currentQuestion = allQuestions.getQuestion(step, lang);
                     showQuestion();
