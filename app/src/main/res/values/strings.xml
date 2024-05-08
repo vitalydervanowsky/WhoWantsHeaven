@@ -10,4 +10,20 @@
     <string name="step_label">%d/%d</string>
     <string name="game_over">GAME OVER</string>
     <string name="congratulations">Поздравляем с победой!!!</string>
+    <string name="value_0">0</string>
+    <string name="value_1000">1000</string>
+    <string name="value_2000">2000</string>
+    <string name="value_3000">3000</string>
+    <string name="value_4000">4000</string>
+    <string name="value_5000">5000</string>
+    <string name="value_6000">6000</string>
+    <string name="value_7000">7000</string>
+    <string name="value_8000">8000</string>
+    <string name="value_9000">9000</string>
+    <string name="value_10000">10000</string>
+    <string name="value_11000">11000</string>
+    <string name="value_12000">12000</string>
+    <string name="value_13000">13000</string>
+    <string name="value_14000">14000</string>
+    <string name="value_15000">15000</string>
 </resources>

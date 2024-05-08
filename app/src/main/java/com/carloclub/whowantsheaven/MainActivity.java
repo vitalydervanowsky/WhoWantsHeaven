@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
     Button buttonRules;
     TextView questionTextView;
     TextView stepTextView;
-    LinearLayout layout1;
+    ImageView imageView;
+    View line0;
+    View line1;
 
     Timer timer;
     TimerDown timerDown;
-    TimerFly timerFly;
     int step = 0;
     boolean pause = false;
     boolean FalseAnswer = false;
@@ -39,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
     Questions allQuestions;
     Question currentQuestion;
     String lang = Constants.LANG_RU;
-    public int heightInPixels;
-    int stepInPixels = 250;
+    int distanceBetweenLines = 0;
 
     SharedPreferences sharedPreferences;
 
@@ -53,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
         allQuestions = new Questions();
         questionTextView = findViewById(R.id.questionTextView);
         stepTextView = findViewById(R.id.stepTextView);
-        layout1 = findViewById(R.id.layout1);
+        line0 = findViewById(R.id.line0);
+        line1 = findViewById(R.id.line1);
+        imageView = findViewById(R.id.imageView);
         buttonAnswer1 = findViewById(R.id.buttonAnswer1);
         buttonAnswer2 = findViewById(R.id.buttonAnswer2);
         buttonAnswer3 = findViewById(R.id.buttonAnswer3);
@@ -63,24 +65,12 @@ public class MainActivity extends AppCompatActivity {
         buttonAdvice = findViewById(R.id.buttonAdvice);
         buttonRules = findViewById(R.id.buttonRules);
         initButtons();
-
-        heightInPixels = getApplicationContext().getResources().getDisplayMetrics().heightPixels;
-        stepInPixels = Math.round(heightInPixels / 17);
-
-        int needH = heightInPixels - stepInPixels - Math.round(stepInPixels / 3 * 3);
-        int WW = layout1.getLayoutParams().width;
-        layout1.setLayoutParams(new LinearLayout.LayoutParams(WW, needH));
-        initTimer();
-    }
-
-    private void initTimer() {
         timer = new Timer();
-        timerFly = new TimerFly();
-        timer.schedule(timerFly, 100, 50);
     }
 
     private void initButtons() {
         buttonAnswer1.setText(R.string.start_button);
+        buttonAnswer1.setVisibility(View.VISIBLE);
         buttonAnswer1.setOnClickListener(v -> {
             if (isGameOver) {
                 startGame();
@@ -89,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         buttonAnswer2.setText(R.string.write_review_button);
+        buttonAnswer2.setVisibility(View.VISIBLE);
         buttonAnswer2.setOnClickListener(v -> {
             if (isGameOver) {
                 writeReview();
@@ -97,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         buttonAnswer3.setText(R.string.exit_button);
+        buttonAnswer3.setVisibility(View.VISIBLE);
         buttonAnswer3.setOnClickListener(v -> {
             if (isGameOver) {
                 finish();
@@ -163,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
+        moveImageView(step);
         if (!sharedPreferences.getBoolean(Constants.SHOULD_SHOW_RULES_DIALOG, false)) {
             showRules();
             sharedPreferences
@@ -175,6 +168,16 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer4.setVisibility(View.VISIBLE);
         currentQuestion = allQuestions.getQuestion(step, lang);
         showQuestion();
+    }
+
+    private void moveImageView(int position) {
+        if (distanceBetweenLines == 0) {
+            distanceBetweenLines = line1.getTop() - line0.getTop();
+        }
+        imageView.animate()
+                .translationY(distanceBetweenLines * position)
+                .setDuration(1000)
+                .start();
     }
 
     private void showRules() {
@@ -241,59 +244,35 @@ public class MainActivity extends AppCompatActivity {
         //int Orientation =0; // 0 вниз 1- влево  2-вправо
         @Override
         public void run() {
-            runOnUiThread(new Runnable() {
+            runOnUiThread(() -> {
+                // Обновляем фоны всех кнопок
+                buttonAnswer1.setBackgroundResource(R.drawable.romb);
+                buttonAnswer2.setBackgroundResource(R.drawable.romb);
+                buttonAnswer3.setBackgroundResource(R.drawable.romb);
+                buttonAnswer4.setBackgroundResource(R.drawable.romb);
+                timerDown.cancel();
+                timerDown = null;
+                pause = false;
 
-                @Override
-                public void run() {
-                    // Обновляем фоны всех кнопок
-                    buttonAnswer1.setBackgroundResource(R.drawable.romb);
-                    buttonAnswer2.setBackgroundResource(R.drawable.romb);
-                    buttonAnswer3.setBackgroundResource(R.drawable.romb);
-                    buttonAnswer4.setBackgroundResource(R.drawable.romb);
-                    timerDown.cancel();
-                    timerDown = null;
-                    pause = false;
+                buttonAnswer1.setVisibility(View.VISIBLE);
+                buttonAnswer2.setVisibility(View.VISIBLE);
+                buttonAnswer3.setVisibility(View.VISIBLE);
+                buttonAnswer4.setVisibility(View.VISIBLE);
 
-                    buttonAnswer1.setVisibility(View.VISIBLE);
-                    buttonAnswer2.setVisibility(View.VISIBLE);
-                    buttonAnswer3.setVisibility(View.VISIBLE);
-                    buttonAnswer4.setVisibility(View.VISIBLE);
-
-                    if (isGameOver) {
-                        questionTextView.setText(R.string.game_over);
-                        step = 0;
-                        initButtons();
-                    } else if (step == Constants.QUIZ_SIZE) {
-                        isGameOver = true;
-                        step++;
-                        questionTextView.setText(R.string.congratulations);
-                        initButtons();
-                    } else {
-                        step++;
-                        currentQuestion = allQuestions.getQuestion(step, lang);
-                        showQuestion();
-                    }
-                }
-            });
-        }
-    }
-
-    class TimerFly extends TimerTask {
-        //int Orientation =0; // 0 вниз 1- влево  2-вправо
-        @Override
-        public void run() {
-            runOnUiThread(new Runnable() {
-
-                @Override
-                public void run() {
-                    int needH = heightInPixels - (step) * stepInPixels - (int) Math.round(stepInPixels / 4 * 5.4);
-                    if (step == 0) needH = needH - Math.round(stepInPixels / 2);
-                    int WW = layout1.getLayoutParams().width;
-                    int HH = layout1.getLayoutParams().height;
-                    if (needH == HH) return;
-                    if (HH > needH) HH = HH - 2;
-                    if (HH < needH) HH = HH + 1;
-                    layout1.setLayoutParams(new LinearLayout.LayoutParams(WW, HH));
+                if (isGameOver) {
+                    questionTextView.setText(R.string.game_over);
+                    step = 0;
+                    initButtons();
+                } else if (step == Constants.QUIZ_SIZE) {
+                    isGameOver = true;
+                    step++;
+                    questionTextView.setText(R.string.congratulations);
+                    initButtons();
+                } else {
+                    moveImageView(step);
+                    step++;
+                    currentQuestion = allQuestions.getQuestion(step, lang);
+                    showQuestion();
                 }
             });
         }
