@@ -19,7 +19,7 @@
 
     <View
         android:id="@+id/line15"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:layout_marginTop="56dp"
         android:background="#DA372C"
@@ -30,7 +30,7 @@
 
     <View
         android:id="@+id/line14"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#DA372C"
         app:layout_constraintBottom_toTopOf="@id/line13"
@@ -39,7 +39,7 @@
 
     <View
         android:id="@+id/line13"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#DA372C"
         app:layout_constraintBottom_toTopOf="@id/line12"
@@ -48,7 +48,7 @@
 
     <View
         android:id="@+id/line12"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#DA372C"
         app:layout_constraintBottom_toTopOf="@id/line11"
@@ -57,7 +57,7 @@
 
     <View
         android:id="@+id/line11"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#DA372C"
         app:layout_constraintBottom_toTopOf="@id/line10"
@@ -66,7 +66,7 @@
 
     <View
         android:id="@+id/line10"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#D1CB22"
         app:layout_constraintBottom_toTopOf="@id/line9"
@@ -75,7 +75,7 @@
 
     <View
         android:id="@+id/line9"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#D1CB22"
         app:layout_constraintBottom_toTopOf="@id/line8"
@@ -84,7 +84,7 @@
 
     <View
         android:id="@+id/line8"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#D1CB22"
         app:layout_constraintBottom_toTopOf="@id/line7"
@@ -93,7 +93,7 @@
 
     <View
         android:id="@+id/line7"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#D1CB22"
         app:layout_constraintBottom_toTopOf="@id/line6"
@@ -102,7 +102,7 @@
 
     <View
         android:id="@+id/line6"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#D1CB22"
         app:layout_constraintBottom_toTopOf="@id/line5"
@@ -111,7 +111,7 @@
 
     <View
         android:id="@+id/line5"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#4CAF50"
         app:layout_constraintBottom_toTopOf="@id/line4"
@@ -120,7 +120,7 @@
 
     <View
         android:id="@+id/line4"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#4CAF50"
         app:layout_constraintBottom_toTopOf="@id/line3"
@@ -129,7 +129,7 @@
 
     <View
         android:id="@+id/line3"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#4CAF50"
         app:layout_constraintBottom_toTopOf="@id/line2"
@@ -138,7 +138,7 @@
 
     <View
         android:id="@+id/line2"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#4CAF50"
         app:layout_constraintBottom_toTopOf="@id/line1"
@@ -147,7 +147,7 @@
 
     <View
         android:id="@+id/line1"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="2dp"
         android:background="#4CAF50"
         app:layout_constraintBottom_toTopOf="@id/line0"
@@ -156,7 +156,7 @@
 
     <View
         android:id="@+id/line0"
-        android:layout_width="@dimen/line_width_60dp"
+        android:layout_width="@dimen/line_width_50dp"
         android:layout_height="5dp"
         android:layout_marginBottom="89dp"
         android:background="#424040"
