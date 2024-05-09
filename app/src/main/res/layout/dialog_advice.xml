@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="380dp"
+    android:layout_width="match_parent"
     android:layout_height="276dp"
     android:background="@drawable/carlo_advice"
     android:orientation="horizontal"
@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/textAdvice"
-        android:layout_width="190dp"
-        android:layout_height="125dp"
+        android:layout_width="216dp"
+        android:layout_height="146dp"
         android:layout_alignParentEnd="true"
         android:gravity="center"
         android:textColor="#3E3E3E"

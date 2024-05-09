@@ -6,11 +6,10 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/rulesTextView"
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:padding="16dp"
-        android:textSize="16sp"
-        tools:text="Rules of game" />
+        android:layout_height="452dp"
+        android:text="Правила игры"
+        android:textSize="20sp" />
 
 </LinearLayout>

@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         initButtons();
         showStartMenu();
         timer = new Timer();
+        moveImageView(0);
     }
 
     private void showStartMenu(){
@@ -221,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
             distanceBetweenLines = line1.getTop() - line0.getTop();
         }
         imageView.animate()
-                .translationY(distanceBetweenLines * position)
+                .translationY(distanceBetweenLines * position-10)
                 .setDuration(1800)
                 .start();
     }
@@ -229,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
     private void showRules() {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_rules);
-        TextView textView = dialog.findViewById(R.id.rulesTextView);
+        //TextView textView = dialog.findViewById(R.id.rulesTextView);
         //textView.setText(R.string.game_over);//
         dialog.show();
     }
