@@ -20,9 +20,9 @@
     <View
         android:id="@+id/line15"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="96dp"
-        android:background="@color/color_level_3"
+        android:layout_height="2dp"
+        android:layout_marginTop="56dp"
+        android:background="#F60B0B"
         app:layout_constraintBottom_toTopOf="@id/line14"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,8 +31,8 @@
     <View
         android:id="@+id/line14"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_3"
+        android:layout_height="2dp"
+        android:background="#F60B0B"
         app:layout_constraintBottom_toTopOf="@id/line13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line15" />
@@ -40,8 +40,8 @@
     <View
         android:id="@+id/line13"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_3"
+        android:layout_height="2dp"
+        android:background="#F60B0B"
         app:layout_constraintBottom_toTopOf="@id/line12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line14" />
@@ -49,8 +49,8 @@
     <View
         android:id="@+id/line12"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_3"
+        android:layout_height="2dp"
+        android:background="#F60B0B"
         app:layout_constraintBottom_toTopOf="@id/line11"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line13" />
@@ -58,8 +58,8 @@
     <View
         android:id="@+id/line11"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_3"
+        android:layout_height="2dp"
+        android:background="#F60B0B"
         app:layout_constraintBottom_toTopOf="@id/line10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line12" />
@@ -67,8 +67,8 @@
     <View
         android:id="@+id/line10"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_2"
+        android:layout_height="2dp"
+        android:background="#FFEB3B"
         app:layout_constraintBottom_toTopOf="@id/line9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line11" />
@@ -76,8 +76,8 @@
     <View
         android:id="@+id/line9"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_2"
+        android:layout_height="2dp"
+        android:background="#FFEB3B"
         app:layout_constraintBottom_toTopOf="@id/line8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line10" />
@@ -85,8 +85,8 @@
     <View
         android:id="@+id/line8"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_2"
+        android:layout_height="2dp"
+        android:background="#FFEB3B"
         app:layout_constraintBottom_toTopOf="@id/line7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line9" />
@@ -94,8 +94,8 @@
     <View
         android:id="@+id/line7"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_2"
+        android:layout_height="2dp"
+        android:background="#FFEB3B"
         app:layout_constraintBottom_toTopOf="@id/line6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line8" />
@@ -103,8 +103,8 @@
     <View
         android:id="@+id/line6"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_2"
+        android:layout_height="2dp"
+        android:background="#FFEB3B"
         app:layout_constraintBottom_toTopOf="@id/line5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line7" />
@@ -112,8 +112,8 @@
     <View
         android:id="@+id/line5"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_1"
+        android:layout_height="2dp"
+        android:background="#3FE811"
         app:layout_constraintBottom_toTopOf="@id/line4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line6" />
@@ -121,8 +121,8 @@
     <View
         android:id="@+id/line4"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_1"
+        android:layout_height="2dp"
+        android:background="#3FE811"
         app:layout_constraintBottom_toTopOf="@id/line3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line5" />
@@ -130,8 +130,8 @@
     <View
         android:id="@+id/line3"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_1"
+        android:layout_height="2dp"
+        android:background="#3FE811"
         app:layout_constraintBottom_toTopOf="@id/line2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line4" />
@@ -139,8 +139,8 @@
     <View
         android:id="@+id/line2"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_1"
+        android:layout_height="2dp"
+        android:background="#3FE811"
         app:layout_constraintBottom_toTopOf="@id/line1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line3" />
@@ -148,8 +148,8 @@
     <View
         android:id="@+id/line1"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:background="@color/color_level_1"
+        android:layout_height="2dp"
+        android:background="#3FE811"
         app:layout_constraintBottom_toTopOf="@id/line0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line2" />
@@ -157,8 +157,8 @@
     <View
         android:id="@+id/line0"
         android:layout_width="@dimen/line_width_60dp"
-        android:layout_height="1dp"
-        android:layout_marginBottom="@dimen/margin_16dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="76dp"
         android:background="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -297,37 +297,37 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:background="@drawable/compass"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/button50"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button50"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:background="@drawable/binoculars"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/buttonAdvice"
-        app:layout_constraintStart_toEndOf="@id/buttonChange"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/buttonChange" />
 
     <Button
         android:id="@+id/buttonAdvice"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:background="@drawable/carlo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/buttonAI"
-        app:layout_constraintStart_toEndOf="@id/button50"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/button50" />
 
     <Button
         android:id="@+id/buttonAI"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:background="@drawable/ai"
-        app:layout_constraintEnd_toStartOf="@id/buttonRules"
-        app:layout_constraintStart_toEndOf="@id/buttonAdvice"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonAdvice" />
 
     <Button
         android:id="@+id/buttonRules"
@@ -348,12 +348,12 @@
         android:padding="@dimen/padding_16dp"
         android:text="@string/app_name"
         android:textColor="#ECE1E2"
-        android:textSize="@dimen/text_size_40sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/buttonAnswer1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/line0"
-        app:layout_constraintTop_toBottomOf="@id/buttonChange" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/buttonAnswer1"
@@ -409,8 +409,8 @@
 
     <TextView
         android:id="@+id/stepTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="138dp"
         android:gravity="center_horizontal"
         android:paddingBottom="100dp"
         android:textColor="#232323"
