@@ -80,12 +80,26 @@ public class MainActivity extends AppCompatActivity {
 
         buttonAI = findViewById(R.id.buttonAI);
         initButtons();
+        showStartMenu();
         timer = new Timer();
     }
 
-    private void initButtons() {
-        buttonAnswer1.setText(R.string.start_button);
+    private void showStartMenu(){
+        buttonAI.setVisibility(View.INVISIBLE);
+        buttonChange.setVisibility(View.INVISIBLE);
+        button50.setVisibility(View.INVISIBLE);
+        buttonAdvice.setVisibility(View.INVISIBLE);
+
         buttonAnswer1.setVisibility(View.VISIBLE);
+        buttonAnswer2.setVisibility(View.VISIBLE);
+        buttonAnswer3.setVisibility(View.VISIBLE);
+        buttonAnswer4.setVisibility(View.INVISIBLE);
+
+        buttonAnswer1.setText(R.string.start_button);
+        buttonAnswer2.setText(R.string.write_review_button);
+        buttonAnswer3.setText(R.string.exit_button);
+    }
+    private void initButtons() {
         buttonAnswer1.setOnClickListener(v -> {
             if (isGameOver) {
                 startGame();
@@ -93,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 enterAnswer(1);
             }
         });
-        buttonAnswer2.setText(R.string.write_review_button);
-        buttonAnswer2.setVisibility(View.VISIBLE);
+
         buttonAnswer2.setOnClickListener(v -> {
             if (isGameOver) {
                 writeReview();
@@ -102,8 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 enterAnswer(2);
             }
         });
-        buttonAnswer3.setText(R.string.exit_button);
-        buttonAnswer3.setVisibility(View.VISIBLE);
+
         buttonAnswer3.setOnClickListener(v -> {
             if (isGameOver) {
                 finish();
@@ -112,7 +124,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         buttonAnswer4.setOnClickListener(v -> enterAnswer(4));
-        buttonAnswer4.setVisibility(View.INVISIBLE);
         button50.setOnClickListener(v -> {
             if (currentQuestion != null) {
                 if (currentQuestion.trueAnswer == 2) {
@@ -185,7 +196,12 @@ public class MainActivity extends AppCompatActivity {
     private void startGame() {
         usedAdvise = false;
         usedAI = false;
+        buttonAI.setVisibility(View.VISIBLE);
+        buttonChange.setVisibility(View.VISIBLE);
+        button50.setVisibility(View.VISIBLE);
+        buttonAdvice.setVisibility(View.VISIBLE);
         buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.ai));
+        step=0;
         moveImageView(step);
         if (!sharedPreferences.getBoolean(Constants.SHOULD_SHOW_RULES_DIALOG, false)) {
             showRules();
@@ -196,7 +212,6 @@ public class MainActivity extends AppCompatActivity {
         }
         step = 1;
         isGameOver = false;
-        buttonAnswer4.setVisibility(View.VISIBLE);
         currentQuestion = allQuestions.getQuestion(step, lang);
         showQuestion();
     }
@@ -215,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_rules);
         TextView textView = dialog.findViewById(R.id.rulesTextView);
-        textView.setText(R.string.game_over);// todo use another text
+        //textView.setText(R.string.game_over);//
         dialog.show();
     }
 
@@ -277,6 +292,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showQuestion() {
+
+        buttonAnswer1.setVisibility(View.VISIBLE);
+        buttonAnswer2.setVisibility(View.VISIBLE);
+        buttonAnswer3.setVisibility(View.VISIBLE);
+        buttonAnswer4.setVisibility(View.VISIBLE);
         questionTextView.setText(currentQuestion.question);
         buttonAnswer1.setText(getString(R.string.option1_label, currentQuestion.answer1));
         buttonAnswer2.setText(getString(R.string.option2_label, currentQuestion.answer2));
@@ -307,12 +327,12 @@ public class MainActivity extends AppCompatActivity {
                 if (isGameOver) {
                     questionTextView.setText(R.string.game_over);
                     step = 0;
-                    initButtons();
+                    showStartMenu();
                 } else if (step == Constants.QUIZ_SIZE) {
                     isGameOver = true;
                     step++;
                     questionTextView.setText(R.string.congratulations);
-                    initButtons();
+                    showStartMenu();
                 } else {
                     //moveImageView(step);
                     step++;
