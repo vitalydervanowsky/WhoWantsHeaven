@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/textAdvice"
-        android:layout_width="216dp"
+        android:layout_width="176dp"
         android:layout_height="146dp"
         android:layout_alignParentEnd="true"
         android:gravity="center"
