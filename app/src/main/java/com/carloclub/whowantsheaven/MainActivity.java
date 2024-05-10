@@ -198,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
+        findViewById(R.id.MainLayout).setBackground(ContextCompat.getDrawable(this, R.drawable.heaven));
         usedAdvise = false;
         usedAI = false;
         buttonAI.setVisibility(View.VISIBLE);
