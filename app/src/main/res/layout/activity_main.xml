@@ -343,8 +343,9 @@
         android:id="@+id/buttonRules"
         android:layout_width="38dp"
         android:layout_height="37dp"
-        android:background="@drawable/info"
+        android:background="@drawable/empty_button"
         android:backgroundTint="@color/white"
+        android:text="i"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -353,7 +354,7 @@
         android:layout_width="38dp"
         android:layout_height="37dp"
         android:layout_marginRight="8dp"
-        android:background="@android:drawable/editbox_dropdown_light_frame"
+        android:background="@drawable/empty_button"
         android:backgroundTint="@color/white"
         android:text="Ru"
         android:textSize="16sp"
