@@ -4,7 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     Dialog dialogAI;
     Button buttonThank;
     SharedPreferences sharedPreferences;
+    private MediaPlayer correctMediaPlayer;
+    private MediaPlayer incorrectMediaPlayer;
 
     boolean usedAdvise = false;
     boolean usedAI = false;
@@ -77,12 +79,12 @@ public class MainActivity extends AppCompatActivity {
         buttonThank = dialog.findViewById(R.id.buttonThank);
         dialogAI = new Dialog(MainActivity.this);
         dialogAI.setContentView(R.layout.dialog_ai);
-
         buttonAI = findViewById(R.id.buttonAI);
         initButtons();
         showStartMenu();
         timer = new Timer();
         moveImageView(0);
+        initMediaPlayers();
     }
 
     private void showStartMenu(){
@@ -100,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer2.setText(R.string.write_review_button);
         buttonAnswer3.setText(R.string.exit_button);
     }
+
     private void initButtons() {
         buttonAnswer1.setOnClickListener(v -> {
             if (isGameOver) {
@@ -288,7 +291,12 @@ public class MainActivity extends AppCompatActivity {
         timerDown = new TimerDown();
         pause = true;
         timer.schedule(timerDown, 1500, 1500);
-        if (isGameOver) step=0;
+        if (isGameOver) {
+            incorrectMediaPlayer.start();
+            step = 0;
+        } else {
+            correctMediaPlayer.start();
+        }
         moveImageView(step);
     }
 
@@ -304,6 +312,15 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer3.setText(getString(R.string.option3_label, currentQuestion.answer3));
         buttonAnswer4.setText(getString(R.string.option4_label, currentQuestion.answer4));
         stepTextView.setText(getString(R.string.step_label, step, Constants.QUIZ_SIZE));
+    }
+
+    private void initMediaPlayers() {
+        if (correctMediaPlayer == null) {
+            correctMediaPlayer = MediaPlayer.create(this, R.raw.correct);
+        }
+        if (incorrectMediaPlayer == null) {
+            incorrectMediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
+        }
     }
 
     class TimerDown extends TimerTask {
