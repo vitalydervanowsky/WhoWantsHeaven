@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     TimerDown timerDown;
     int step = 0;
     boolean pause = false;
-    boolean FalseAnswer = false;
     boolean isGameOver = true;
     Questions allQuestions;
     Question currentQuestion;
@@ -52,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer correctMediaPlayer;
     private MediaPlayer incorrectMediaPlayer;
 
-    boolean usedAdvise = false;
-    boolean usedAI = false;
+    boolean isUsedChange = false;
+    boolean isUsed50 = false;
+    boolean isUsedAdvise = false;
+    boolean isUsedAI = false;
     Button buttonAI;
 
     @Override
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         initMediaPlayers();
     }
 
-    private void showStartMenu(){
+    private void showStartMenu() {
         buttonAI.setVisibility(View.INVISIBLE);
         buttonChange.setVisibility(View.INVISIBLE);
         button50.setVisibility(View.INVISIBLE);
@@ -132,7 +133,9 @@ public class MainActivity extends AppCompatActivity {
         });
         buttonAnswer4.setOnClickListener(v -> enterAnswer(4));
         button50.setOnClickListener(v -> {
-            if (currentQuestion != null) {
+            if (currentQuestion != null && !isUsed50) {
+                button50.setBackgroundResource(R.drawable.info);
+                isUsed50 = true;
                 if (currentQuestion.trueAnswer == 2) {
                     buttonAnswer1.setVisibility(View.INVISIBLE);
                 } else {
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
         });
         buttonChange.setOnClickListener(v -> {
             if (pause || isGameOver) return;
+            if (isUsedChange) return;
             buttonAnswer1.setVisibility(View.VISIBLE);
             buttonAnswer2.setVisibility(View.VISIBLE);
             buttonAnswer3.setVisibility(View.VISIBLE);
@@ -172,7 +176,8 @@ public class MainActivity extends AppCompatActivity {
             }
             currentQuestion = newQuestion;
             showQuestion();
-
+            buttonChange.setBackgroundResource(R.drawable.info);
+            isUsedChange = true;
         });
         buttonAdvice.setOnClickListener(v -> {
             if (currentQuestion != null && currentQuestion.hint != null) {
@@ -186,16 +191,14 @@ public class MainActivity extends AppCompatActivity {
         });
         buttonRules.setOnClickListener(v -> showRules());
 
-        buttonThank.setOnClickListener(v -> {
-            dialog.hide();
-        });
+        buttonThank.setOnClickListener(v -> dialog.hide());
     }
 
     private void writeReview() {
         String packageName = getPackageName();
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + packageName)));
-        } catch (android.content.ActivityNotFoundException anfe) {
+        } catch (android.content.ActivityNotFoundException e) {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)));
         }
     }
@@ -203,14 +206,19 @@ public class MainActivity extends AppCompatActivity {
     private void startGame() {
         findViewById(R.id.MainLayout).setBackground(ContextCompat.getDrawable(this, R.drawable.heaven));
         lineLayout.setVisibility(View.VISIBLE);
-        usedAdvise = false;
-        usedAI = false;
-        buttonAI.setVisibility(View.VISIBLE);
+        isUsedChange = false;
         buttonChange.setVisibility(View.VISIBLE);
+        buttonChange.setBackground(ContextCompat.getDrawable(this, R.drawable.flag));
+        isUsed50 = false;
         button50.setVisibility(View.VISIBLE);
+        button50.setBackground(ContextCompat.getDrawable(this, R.drawable.binoculars));
+        isUsedAdvise = false;
         buttonAdvice.setVisibility(View.VISIBLE);
+        buttonAdvice.setBackground(ContextCompat.getDrawable(this, R.drawable.phone));
+        isUsedAI = false;
+        buttonAI.setVisibility(View.VISIBLE);
         buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.ai));
-        step=0;
+        step = 0;
         moveImageView(step);
         if (!sharedPreferences.getBoolean(Constants.SHOULD_SHOW_RULES_DIALOG, false)) {
             showRules();
@@ -230,7 +238,7 @@ public class MainActivity extends AppCompatActivity {
             distanceBetweenLines = line1.getTop() - line0.getTop();
         }
         imageView.animate()
-                .translationY(distanceBetweenLines * position-10)
+                .translationY(distanceBetweenLines * position - 10)
                 .setDuration(1800)
                 .start();
     }
@@ -244,23 +252,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAdviceAI(String text) {
-        if (usedAI) return;
+        if (isUsedAI) return;
         //Dialog dialog = new Dialog(MainActivity.this);
         //dialog.setContentView(R.layout.dialog_advice);
         TextView textAdvice = dialogAI.findViewById(R.id.textAdvice);
         textAdvice.setText(text);
         dialogAI.show();
-        usedAI = true;
-        buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.ai_x));
+        isUsedAI = true;
+        buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.info));
     }
+
     private void showAdvice(String text) {
-        if (usedAdvise) return;
+        if (isUsedAdvise) return;
         //Dialog dialog = new Dialog(MainActivity.this);
         //dialog.setContentView(R.layout.dialog_advice);
         TextView textAdvice = dialog.findViewById(R.id.textAdvice);
         textAdvice.setText(text);
         dialog.show();
-        usedAdvise = true;
+        buttonAdvice.setBackgroundResource(R.drawable.info);
+        isUsedAdvise = true;
     }
 
     private void enterAnswer(int userAnswer) {
