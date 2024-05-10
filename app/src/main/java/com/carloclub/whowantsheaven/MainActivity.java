@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
 
 import java.util.Timer;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     View line0;
     View line1;
+    ConstraintLayout lineLayout;
 
     Timer timer;
     TimerDown timerDown;
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
         buttonChange = findViewById(R.id.buttonChange);
         buttonAdvice = findViewById(R.id.buttonAdvice);
         buttonRules = findViewById(R.id.buttonRules);
+        lineLayout = findViewById(R.id.lineLayout);
         dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_advice);
         buttonThank = dialog.findViewById(R.id.buttonThank);
@@ -199,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void startGame() {
         findViewById(R.id.MainLayout).setBackground(ContextCompat.getDrawable(this, R.drawable.heaven));
+        lineLayout.setVisibility(View.VISIBLE);
         usedAdvise = false;
         usedAI = false;
         buttonAI.setVisibility(View.VISIBLE);
@@ -302,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showQuestion() {
-
+        stepTextView.setVisibility(View.VISIBLE);
         buttonAnswer1.setVisibility(View.VISIBLE);
         buttonAnswer2.setVisibility(View.VISIBLE);
         buttonAnswer3.setVisibility(View.VISIBLE);
