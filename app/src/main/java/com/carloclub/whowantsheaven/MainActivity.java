@@ -310,12 +310,8 @@ public class MainActivity extends AppCompatActivity {
         pause = true;
         timer.schedule(timerDown, 1500, 1500);
         if (isGameOver) {
-            //incorrectMediaPlayer.start();
-            if(step>10)step=10;
-            else if (step>5)step=5;
-            else step = 0;
-            isGameOver=false;
-            correctMediaPlayer.start();
+            incorrectMediaPlayer.start();
+            step = 0;
         } else {
             correctMediaPlayer.start();
         }
@@ -365,13 +361,9 @@ public class MainActivity extends AppCompatActivity {
                 buttonAnswer4.setVisibility(View.VISIBLE);
 
                 if (isGameOver) {
-                    //questionTextView.setText(R.string.game_over);
-                    isGameOver=false;
-                    if(step>10)step=11;
-                    else if (step>5)step=6;
-                    else step = 1;
-                    currentQuestion = allQuestions.getQuestion(step, lang);
-                    showQuestion();
+                    questionTextView.setText(R.string.game_over);
+                    step = 0;
+                    showStartMenu();
                 } else if (step == Constants.QUIZ_SIZE) {
                     isGameOver = true;
                     step++;
