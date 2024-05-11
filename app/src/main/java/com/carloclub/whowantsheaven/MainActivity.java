@@ -102,16 +102,18 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer1.setVisibility(View.VISIBLE);
         buttonAnswer2.setVisibility(View.VISIBLE);
         buttonAnswer3.setVisibility(View.VISIBLE);
-        buttonAnswer4.setVisibility(View.INVISIBLE);
+        buttonAnswer4.setVisibility(View.VISIBLE);
         if (lang.equals(Constants.LANG_BY)) {
             buttonAnswer1.setText(R.string.start_button_by);
-            buttonAnswer2.setText(R.string.write_review_button_by);
-            buttonAnswer3.setText(R.string.exit_button_by);
+            buttonAnswer2.setText(R.string.show_advise_button_by);
+            buttonAnswer3.setText(R.string.write_review_button_by);
+            buttonAnswer4.setText(R.string.exit_button_by);
         }
         else {
             buttonAnswer1.setText(R.string.start_button);
-            buttonAnswer2.setText(R.string.write_review_button);
-            buttonAnswer3.setText(R.string.exit_button);
+            buttonAnswer2.setText(R.string.show_advise_button);
+            buttonAnswer3.setText(R.string.write_review_button);
+            buttonAnswer4.setText(R.string.exit_button);
         }
     }
 
@@ -126,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
 
         buttonAnswer2.setOnClickListener(v -> {
             if (isGameOver) {
-                writeReview();
+                showRules();
             } else {
                 enterAnswer(2);
             }
@@ -134,12 +136,18 @@ public class MainActivity extends AppCompatActivity {
 
         buttonAnswer3.setOnClickListener(v -> {
             if (isGameOver) {
-                finish();
+                writeReview();
             } else {
                 enterAnswer(3);
             }
         });
-        buttonAnswer4.setOnClickListener(v -> enterAnswer(4));
+        buttonAnswer4.setOnClickListener(v -> {
+            if (isGameOver) {
+                finish();
+            } else {
+                enterAnswer(4);
+            }
+        });
         button50.setOnClickListener(v -> {
             if (currentQuestion != null && !isUsed50) {
                 button50.setBackgroundResource(R.drawable.binocularused);
