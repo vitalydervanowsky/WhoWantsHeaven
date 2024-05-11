@@ -360,10 +360,10 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer3.setVisibility(View.VISIBLE);
         buttonAnswer4.setVisibility(View.VISIBLE);
         questionTextView.setText(currentQuestion.question);
-        buttonAnswer1.setText(getString(R.string.option1_label, currentQuestion.answer1));
-        buttonAnswer2.setText(getString(R.string.option2_label, currentQuestion.answer2));
-        buttonAnswer3.setText(getString(R.string.option3_label, currentQuestion.answer3));
-        buttonAnswer4.setText(getString(R.string.option4_label, currentQuestion.answer4));
+        buttonAnswer1.setText(currentQuestion.answer1);
+        buttonAnswer2.setText(currentQuestion.answer2);
+        buttonAnswer3.setText(currentQuestion.answer3);
+        buttonAnswer4.setText(currentQuestion.answer4);
         stepTextView.setText(getString(R.string.step_label, step, Constants.QUIZ_SIZE));
     }
 
