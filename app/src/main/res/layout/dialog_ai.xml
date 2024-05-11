@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="530dp"
     android:layout_alignParentEnd="true"
-    android:background="@drawable/aidialog"
+    android:background="@drawable/backai"
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
