@@ -2,33 +2,37 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="276dp"
+    android:layout_height="526dp"
     android:background="@drawable/carlo_advice"
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textAdvice"
-        android:layout_width="176dp"
-        android:layout_height="146dp"
+        android:layout_width="match_parent"
+        android:layout_height="262dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="5dp"
         android:gravity="center"
-        android:textColor="#3E3E3E"
-        android:textSize="16sp"
+        android:textColor="#0A1032"
+        android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="TextView" />
 
     <Button
         android:id="@+id/buttonThank"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
+        android:layout_width="154dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="false"
         android:layout_alignParentTop="false"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="#AF3131"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="43dp"
+        android:background="@drawable/romb"
         android:text="Спасибо, Карло!"
-        android:textColor="#192357"
+        android:textColor="#FFFFFF"
         android:textStyle="bold" />
 </RelativeLayout>

@@ -5,7 +5,7 @@
     android:id="@+id/MainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mb_temp">
+    android:background="@drawable/mb">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lineLayout"
@@ -185,7 +185,7 @@
             android:layout_width="0dp"
             android:layout_height="5dp"
             android:layout_marginBottom="89dp"
-            android:background="#424040"
+            android:background="#808080"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -373,7 +373,8 @@
         android:layout_height="37dp"
         android:background="@drawable/empty_button"
         android:backgroundTint="@color/white"
-        android:text="i"
+        android:text="\?"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -397,7 +398,7 @@
         android:background="#00F6E7E7"
         android:gravity="center|center_horizontal"
         android:padding="@dimen/padding_16dp"
-        android:textColor="#ECE1E2"
+        android:textColor="#FCFCFF"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/buttonAnswer1"
@@ -408,7 +409,10 @@
     <Button
         android:id="@+id/buttonAnswer1"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp"
         android:background="@drawable/romb"
         android:text="@string/start_button"
         android:textColor="#F8F6F6"
@@ -421,7 +425,10 @@
     <Button
         android:id="@+id/buttonAnswer2"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp"
         android:background="@drawable/romb"
         android:text="@string/write_review_button"
         android:textColor="#F1F1ED"
@@ -434,7 +441,10 @@
     <Button
         android:id="@+id/buttonAnswer3"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp"
         android:background="@drawable/romb"
         android:text="@string/exit_button"
         android:textColor="#F8F6F6"
@@ -447,7 +457,10 @@
     <Button
         android:id="@+id/buttonAnswer4"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="3dp"
         android:background="@drawable/romb"
         android:textColor="#F1F1ED"
         android:textSize="@dimen/text_size_16sp"
@@ -459,8 +472,8 @@
 
     <TextView
         android:id="@+id/stepTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="356dp"
+        android:layout_height="45dp"
         android:gravity="center_horizontal"
         android:textSize="@dimen/text_size_40sp"
         android:textStyle="bold"

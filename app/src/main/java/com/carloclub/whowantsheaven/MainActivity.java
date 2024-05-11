@@ -134,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer4.setOnClickListener(v -> enterAnswer(4));
         button50.setOnClickListener(v -> {
             if (currentQuestion != null && !isUsed50) {
-                button50.setBackgroundResource(R.drawable.info);
+                button50.setBackgroundResource(R.drawable.binocularused);
                 isUsed50 = true;
                 if (currentQuestion.trueAnswer == 2) {
                     buttonAnswer1.setVisibility(View.INVISIBLE);
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }
             currentQuestion = newQuestion;
             showQuestion();
-            buttonChange.setBackgroundResource(R.drawable.info);
+            buttonChange.setBackgroundResource(R.drawable.chageused);
             isUsedChange = true;
         });
         buttonAdvice.setOnClickListener(v -> {
@@ -192,6 +192,9 @@ public class MainActivity extends AppCompatActivity {
         buttonRules.setOnClickListener(v -> showRules());
 
         buttonThank.setOnClickListener(v -> dialog.hide());
+
+        Button buttonOK = dialogAI.findViewById(R.id.buttonAIOK);
+        buttonOK.setOnClickListener(v -> dialogAI.hide());
     }
 
     private void writeReview() {
@@ -259,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
         textAdvice.setText(text);
         dialogAI.show();
         isUsedAI = true;
-        buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.info));
+        buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.aiused));
     }
 
     private void showAdvice(String text) {
@@ -269,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
         TextView textAdvice = dialog.findViewById(R.id.textAdvice);
         textAdvice.setText(text);
         dialog.show();
-        buttonAdvice.setBackgroundResource(R.drawable.info);
+        buttonAdvice.setBackgroundResource(R.drawable.phoneused);
         isUsedAdvise = true;
     }
 
@@ -278,29 +281,29 @@ public class MainActivity extends AppCompatActivity {
 
         int trueAnswer = currentQuestion.trueAnswer;
         if (trueAnswer == 1) {
-            buttonAnswer1.setBackgroundResource(R.drawable.rombgreen);
+            buttonAnswer1.setBackgroundResource(R.drawable.rombgood);
         }
         if (trueAnswer == 2) {
-            buttonAnswer2.setBackgroundResource(R.drawable.rombgreen);
+            buttonAnswer2.setBackgroundResource(R.drawable.rombgood);
         }
         if (trueAnswer == 3) {
-            buttonAnswer3.setBackgroundResource(R.drawable.rombgreen);
+            buttonAnswer3.setBackgroundResource(R.drawable.rombgood);
         }
         if (trueAnswer == 4) {
-            buttonAnswer4.setBackgroundResource(R.drawable.rombgreen);
+            buttonAnswer4.setBackgroundResource(R.drawable.rombgood);
         }
 
         if (userAnswer == 1 && trueAnswer != 1) {
-            buttonAnswer1.setBackgroundResource(R.drawable.romborange);
+            buttonAnswer1.setBackgroundResource(R.drawable.rombbad);
         }
         if (userAnswer == 2 && trueAnswer != 2) {
-            buttonAnswer2.setBackgroundResource(R.drawable.romborange);
+            buttonAnswer2.setBackgroundResource(R.drawable.rombbad);
         }
         if (userAnswer == 4 && trueAnswer != 4) {
-            buttonAnswer4.setBackgroundResource(R.drawable.romborange);
+            buttonAnswer4.setBackgroundResource(R.drawable.rombbad);
         }
         if (userAnswer == 3 && trueAnswer != 3) {
-            buttonAnswer3.setBackgroundResource(R.drawable.romborange);
+            buttonAnswer3.setBackgroundResource(R.drawable.rombbad);
         }
         isGameOver = userAnswer != trueAnswer;
         timerDown = new TimerDown();
@@ -316,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showQuestion() {
-        stepTextView.setVisibility(View.VISIBLE);
+        //stepTextView.setVisibility(View.VISIBLE);
         buttonAnswer1.setVisibility(View.VISIBLE);
         buttonAnswer2.setVisibility(View.VISIBLE);
         buttonAnswer3.setVisibility(View.VISIBLE);
