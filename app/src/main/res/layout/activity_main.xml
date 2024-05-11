@@ -384,7 +384,7 @@
         android:layout_marginRight="8dp"
         android:background="@drawable/empty_button"
         android:backgroundTint="@color/white"
-        android:text="Ru"
+        android:text="BY"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@id/buttonRules"
         app:layout_constraintTop_toTopOf="parent" />
