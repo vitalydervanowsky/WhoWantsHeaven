@@ -32,7 +32,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="43dp"
         android:background="@drawable/romb"
-        android:text="Спасибо, Карло!"
+        android:text="@string/thank_you_carlo_by"
         android:textColor="#FFFFFF"
         android:textStyle="bold" />
 </RelativeLayout>

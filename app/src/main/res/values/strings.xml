@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Хто хоча на неба?</string>
     <string name="start_button">Начать взлет</string>
+    <string name="start_button_by">Пачаць палёт</string>
     <string name="write_review_button">Оставить отзыв</string>
+    <string name="write_review_button_by">Пакінуць водгук</string>
+    <string name="thank_you_carlo">Спасибо, Карло!</string>
+    <string name="thank_you_carlo_by">Дзякуй, Карла!</string>
     <string name="exit_button">Выйти</string>
+    <string name="exit_button_by">Выйсці</string>
     <string name="option1_label">А. %s</string>
     <string name="option2_label">Б. %s</string>
     <string name="option3_label">В. %s</string>
@@ -10,6 +15,7 @@
     <string name="step_label">%d/%d</string>
     <string name="game_over">GAME OVER</string>
     <string name="congratulations">Поздравляем с победой!!!</string>
+    <string name="congratulations_by">Вішнуем з перамогай!!!</string>
     <string name="value_0">0</string>
     <string name="value_1000">1000</string>
     <string name="value_2000">2000</string>

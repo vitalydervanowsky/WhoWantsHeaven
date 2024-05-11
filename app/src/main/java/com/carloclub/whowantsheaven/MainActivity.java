@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button buttonChange;
     Button button50;
     Button buttonRules;
+    Button buttonLang;
     TextView questionTextView;
     TextView stepTextView;
     ImageView imageView;
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isGameOver = true;
     Questions allQuestions;
     Question currentQuestion;
-    String lang = Constants.LANG_RU;
+    String lang = Constants.LANG_BY;
     int distanceBetweenLines = 0;
     Dialog dialog;
     Dialog dialogAI;
@@ -77,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
         buttonChange = findViewById(R.id.buttonChange);
         buttonAdvice = findViewById(R.id.buttonAdvice);
         buttonRules = findViewById(R.id.buttonRules);
+        buttonLang = findViewById(R.id.buttonLang);
         lineLayout = findViewById(R.id.lineLayout);
         dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_advice);
@@ -101,10 +103,16 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer2.setVisibility(View.VISIBLE);
         buttonAnswer3.setVisibility(View.VISIBLE);
         buttonAnswer4.setVisibility(View.INVISIBLE);
-
-        buttonAnswer1.setText(R.string.start_button);
-        buttonAnswer2.setText(R.string.write_review_button);
-        buttonAnswer3.setText(R.string.exit_button);
+        if (lang.equals(Constants.LANG_BY)) {
+            buttonAnswer1.setText(R.string.start_button_by);
+            buttonAnswer2.setText(R.string.write_review_button_by);
+            buttonAnswer3.setText(R.string.exit_button_by);
+        }
+        else {
+            buttonAnswer1.setText(R.string.start_button);
+            buttonAnswer2.setText(R.string.write_review_button);
+            buttonAnswer3.setText(R.string.exit_button);
+        }
     }
 
     private void initButtons() {
@@ -195,6 +203,19 @@ public class MainActivity extends AppCompatActivity {
 
         Button buttonOK = dialogAI.findViewById(R.id.buttonAIOK);
         buttonOK.setOnClickListener(v -> dialogAI.hide());
+        buttonLang.setOnClickListener(v -> changeLang());
+    }
+
+    void changeLang(){
+        if (lang.equals(Constants.LANG_BY))
+            lang=Constants.LANG_RU;
+        else
+            lang=Constants.LANG_BY;
+        buttonLang.setText(lang);
+        if (isGameOver)
+            showStartMenu();
+        else
+            showQuestion();
     }
 
     private void writeReview() {
@@ -270,6 +291,11 @@ public class MainActivity extends AppCompatActivity {
         //Dialog dialog = new Dialog(MainActivity.this);
         //dialog.setContentView(R.layout.dialog_advice);
         TextView textAdvice = dialog.findViewById(R.id.textAdvice);
+        Button button = dialog.findViewById(R.id.buttonThank);
+        if (lang.equals(Constants.LANG_BY))
+            button.setText(R.string.thank_you_carlo_by);
+        else
+            button.setText(R.string.thank_you_carlo);
         textAdvice.setText(text);
         dialog.show();
         buttonAdvice.setBackgroundResource(R.drawable.phoneused);
@@ -319,6 +345,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showQuestion() {
+        currentQuestion = allQuestions.getQuestion(step, lang, currentQuestion.id);
         //stepTextView.setVisibility(View.VISIBLE);
         buttonAnswer1.setVisibility(View.VISIBLE);
         buttonAnswer2.setVisibility(View.VISIBLE);
