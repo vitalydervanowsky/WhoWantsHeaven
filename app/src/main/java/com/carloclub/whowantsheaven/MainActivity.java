@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     Question currentQuestion;
     String lang = Constants.LANG_BY;
     int distanceBetweenLines = 0;
+    int defaultYPosition = 0;
     Dialog dialog;
     Dialog dialogAI;
     Button buttonThank;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         initButtons();
         showStartMenu();
         timer = new Timer();
-        moveImageView(0);
+//        moveImageView(0);
         initMediaPlayers();
     }
 
@@ -251,7 +252,10 @@ public class MainActivity extends AppCompatActivity {
         buttonAI.setVisibility(View.VISIBLE);
         buttonAI.setBackground(ContextCompat.getDrawable(this, R.drawable.ai));
         step = 0;
-        moveImageView(step);
+        if (defaultYPosition <= 0) {
+            defaultYPosition = imageView.getTop() - 10;
+        }
+        imageView.setY(defaultYPosition);
         if (!sharedPreferences.getBoolean(Constants.SHOULD_SHOW_RULES_DIALOG, false)) {
             showRules();
             sharedPreferences
@@ -369,11 +373,31 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerDown, 1500, 1500);
         if (isGameOver) {
             incorrectMediaPlayer.start();
+            String text ;
+            if (step == 1) {
+                if (lang.equals(Constants.LANG_BY)) {
+                    text = getString(R.string.final_text_for_first_attempt_by);
+                } else {
+                    text = getString(R.string.final_text_for_first_attempt);
+                }
+            } else {
+                int textRes;
+                if (lang.equals(Constants.LANG_BY)) {
+                    textRes = R.string.final_text_for_default_attempt_by;
+                } else {
+                    textRes = R.string.final_text_for_default_attempt;
+                }
+                text = getString(
+                        textRes,
+                        step - 1
+                );
+            }
+            questionTextView.setText(text);
             step = 0;
         } else {
             correctMediaPlayer.start();
+            moveImageView(step);
         }
-        moveImageView(step);
     }
 
     private void showQuestion() {
@@ -420,13 +444,16 @@ public class MainActivity extends AppCompatActivity {
                 buttonAnswer4.setVisibility(View.VISIBLE);
 
                 if (isGameOver) {
-                    questionTextView.setText(R.string.game_over);
                     step = 0;
                     showStartMenu();
                 } else if (step == Constants.QUIZ_SIZE) {
                     isGameOver = true;
                     step++;
-                    questionTextView.setText(R.string.congratulations);
+                    if (lang.equals(Constants.LANG_RU)) {
+                        questionTextView.setText(R.string.final_text_for_success);
+                    } else {
+                        questionTextView.setText(R.string.final_text_for_success_by);
+                    }
                     showStartMenu();
                 } else {
                     //moveImageView(step);

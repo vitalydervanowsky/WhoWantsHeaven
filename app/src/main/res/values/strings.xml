@@ -27,7 +27,12 @@
     <string name="option3_label">В. %s</string>
     <string name="option4_label">Г. %s</string>
     <string name="step_label">%d/%d</string>
-    <string name="game_over">GAME OVER</string>
+    <string name="final_text_for_first_attempt">Молодец!\nПопробуй еще раз! Небеса ждут!</string>
+    <string name="final_text_for_first_attempt_by">Малайчынка!\nПаспрабуй яшчэ раз! Нябёсы чакаюсь</string>
+    <string name="final_text_for_default_attempt">Молодец!\nТы ответил правильно на %d вопросов!\nПопробуй еще раз!</string>
+    <string name="final_text_for_default_attempt_by">Малайчынка!\nТы адказаў правiльна на %d пытанняў!\nПаспрабуй яшчэ раз!</string>
+    <string name="final_text_for_success">Молодец!\nТы ответил на все 15 вопросов!\Поздравляем!\Пусть твои знания помогают на пути к святочти!</string>
+    <string name="final_text_for_success_by">Малайчынка!\nТы адказаў на ўсе 15 пытанняў!\nВiншуем!\nНяхай твае веды дапамагаюць на шляху да святасцi!</string>
     <string name="congratulations">Поздравляем с победой!!!</string>
     <string name="congratulations_by">Вішнуем з перамогай!!!</string>
     <string name="value_0">0</string>
