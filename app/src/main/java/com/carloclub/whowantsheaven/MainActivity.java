@@ -270,6 +270,30 @@ public class MainActivity extends AppCompatActivity {
     private void showRules() {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_rules);
+        TextView startText = dialog.findViewById(R.id.startText);
+        TextView textViewFlag = dialog.findViewById(R.id.textViewFlag);
+        TextView textViewBino = dialog.findViewById(R.id.textViewBino);
+        TextView textViewPhon = dialog.findViewById(R.id.textViewPhon);
+        TextView textViewAisp = dialog.findViewById(R.id.textViewAisp);
+        TextView overText = dialog.findViewById(R.id.overText);
+        if (lang.equals(Constants.LANG_BY))
+        {
+            startText.setText(R.string.rule1_by);
+            textViewFlag.setText(R.string.rule2_by);
+            textViewBino.setText(R.string.rule3_by);
+            textViewPhon.setText(R.string.rule4_by);
+            textViewAisp.setText(R.string.rule5_by);
+            overText.setText(R.string.rule6_by);
+        }
+        else
+        {
+            startText.setText(R.string.rule1);
+            textViewFlag.setText(R.string.rule2);
+            textViewBino.setText(R.string.rule3);
+            textViewPhon.setText(R.string.rule4);
+            textViewAisp.setText(R.string.rule5);
+            overText.setText(R.string.rule6);
+        }
         //TextView textView = dialog.findViewById(R.id.rulesTextView);
         //textView.setText(R.string.game_over);//
         dialog.show();

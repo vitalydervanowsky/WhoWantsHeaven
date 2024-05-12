@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="В этой игре тебе нужно ответить на серию вопросов, чтобы выиграть. \nЕсли затруднишься, можешь воспользоваться подсказками:"
+                android:text="@string/rule1_by"
                 android:textSize="20sp" />
 
             <LinearLayout
@@ -49,7 +49,7 @@
                         android:layout_marginEnd="64dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="Повернуть ветер\n(Получить другой вопрос),"
+                        android:text="@string/rule2_by"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -73,7 +73,7 @@
                         android:layout_marginEnd="64dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="Бинокль\n(Оставить только 2 варианта),"
+                        android:text="@string/rule3_by"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -97,7 +97,7 @@
                         android:layout_marginEnd="64dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="Звонок Карло\n(Получить подсказку от бл. Карло)"
+                        android:text="@string/rule4_by"
                         android:textSize="20sp" />
                 </LinearLayout>
 
@@ -121,15 +121,16 @@
                         android:layout_marginEnd="64dp"
                         android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
-                        android:text="и Помощь ИИ\n(Получить ответ от ИИ)."
+                        android:text="@string/rule5_by"
                         android:textSize="20sp" />
                 </LinearLayout>
+
                 <TextView
                     android:id="@+id/overText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal|center_vertical"
-                    android:text="Помни, подсказки могут помочь, но и ввести в заблуждение, так что решай внимательно! \nТебе предстоит пройти 15 вопросов, и всего одна ошибка может лишить тебя победы.  Удачи!"
+                    android:text="@string/rule6_by"
                     android:textSize="20sp" />
             </LinearLayout>
 
