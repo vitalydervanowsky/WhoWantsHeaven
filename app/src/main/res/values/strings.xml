@@ -2,6 +2,8 @@
     <string name="app_name">Хто хоча на неба?</string>
     <string name="start_button">Начать взлет</string>
     <string name="start_button_by">Пачаць палёт</string>
+    <string name="show_advise_button">Правила игры</string>
+    <string name="show_advise_button_by">Правілы гульні</string>
     <string name="write_review_button">Оставить отзыв</string>
     <string name="write_review_button_by">Пакінуць водгук</string>
     <string name="thank_you_carlo">Спасибо, Карло!</string>

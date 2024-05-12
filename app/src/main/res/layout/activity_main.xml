@@ -419,7 +419,8 @@
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/lineLayout"
-        app:layout_constraintTop_toBottomOf="@id/questionTextView" />
+        app:layout_constraintTop_toBottomOf="@id/questionTextView"
+        app:layout_goneMarginLeft="3dp" />
 
     <Button
         android:id="@+id/buttonAnswer2"
@@ -429,13 +430,14 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="3dp"
         android:background="@drawable/romb"
-        android:text="@string/write_review_button"
+        android:text="@string/show_advise_button"
         android:textColor="#F1F1ED"
         android:textSize="@dimen/text_size_16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/lineLayout"
-        app:layout_constraintTop_toBottomOf="@id/buttonAnswer1" />
+        app:layout_constraintTop_toBottomOf="@id/buttonAnswer1"
+        app:layout_goneMarginLeft="3dp" />
 
     <Button
         android:id="@+id/buttonAnswer3"
@@ -445,13 +447,14 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="3dp"
         android:background="@drawable/romb"
-        android:text="@string/exit_button"
+        android:text="@string/write_review_button"
         android:textColor="#F8F6F6"
         android:textSize="@dimen/text_size_16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/lineLayout"
-        app:layout_constraintTop_toBottomOf="@id/buttonAnswer2" />
+        app:layout_constraintTop_toBottomOf="@id/buttonAnswer2"
+        app:layout_goneMarginLeft="3dp" />
 
     <Button
         android:id="@+id/buttonAnswer4"
@@ -461,13 +464,14 @@
         android:layout_marginTop="3dp"
         android:layout_marginRight="3dp"
         android:background="@drawable/romb"
+        android:text="@string/exit_button"
         android:textColor="#F1F1ED"
         android:textSize="@dimen/text_size_16sp"
         android:textStyle="bold"
-        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/lineLayout"
-        app:layout_constraintTop_toBottomOf="@id/buttonAnswer3" />
+        app:layout_constraintTop_toBottomOf="@id/buttonAnswer3"
+        app:layout_goneMarginLeft="3dp" />
 
     <TextView
         android:id="@+id/stepTextView"

@@ -2,38 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="530dp"
+    android:layout_height="400dp"
     android:layout_alignParentEnd="true"
-    android:background="@drawable/aidialog"
+    android:background="@drawable/backai"
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textAdvice"
         android:layout_width="match_parent"
-        android:layout_height="176dp"
+        android:layout_height="262dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="55dp"
         android:gravity="center"
-        android:textColor="#FFFFFF"
+        android:padding="@dimen/padding_16dp"
+        android:textColor="#0A1032"
         android:textSize="20sp"
+        android:textStyle="bold"
         tools:text="TextView" />
 
     <Button
         android:id="@+id/buttonAIOK"
-        android:layout_width="137dp"
-        android:layout_height="52dp"
+        android:layout_width="154dp"
+        android:layout_height="50dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="0dp"
+        android:layout_margin="@dimen/margin_16dp"
         android:background="@drawable/romb"
         android:gravity="center"
         android:text="OK"
         android:textColor="#F4F4F4"
-        android:textSize="24sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
