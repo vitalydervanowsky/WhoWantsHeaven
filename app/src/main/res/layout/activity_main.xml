@@ -400,6 +400,7 @@
         android:textColor="#FCFCFF"
         android:textSize="28sp"
         android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@id/buttonAnswer1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/lineLayout"
