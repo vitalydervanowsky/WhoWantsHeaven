@@ -108,14 +108,14 @@ public class MainActivity extends AppCompatActivity {
             buttonAnswer2.setText(R.string.show_advise_button_by);
             buttonAnswer3.setText(R.string.write_review_button_by);
             buttonAnswer4.setText(R.string.exit_button_by);
-            questionTextView.setText(R.string.congratulations_by);
+        //    questionTextView.setText(R.string.congratulations_by);
         }
         else {
             buttonAnswer1.setText(R.string.start_button);
             buttonAnswer2.setText(R.string.show_advise_button);
             buttonAnswer3.setText(R.string.write_review_button);
             buttonAnswer4.setText(R.string.exit_button);
-            questionTextView.setText(R.string.congratulations);
+         //   questionTextView.setText(R.string.congratulations);
         }
     }
 
@@ -425,7 +425,7 @@ public class MainActivity extends AppCompatActivity {
                     questionTextView.setText(R.string.game_over);
                     step = 0;
                     showStartMenu();
-                } else if (step == Constants.QUIZ_SIZE) {
+                } else if (step == Constants.QUIZ_SIZE) { //
                     isGameOver = true;
                     step++;
                     if (lang.equals(Constants.LANG_BY))
@@ -433,6 +433,14 @@ public class MainActivity extends AppCompatActivity {
                     else
                         questionTextView.setText(R.string.congratulations);
                     showStartMenu();
+                    if (lang.equals(Constants.LANG_BY)) {
+
+                        questionTextView.setText(R.string.congratulations_by);
+                    }
+                    else {
+
+                        questionTextView.setText(R.string.congratulations);
+                    }
                 } else {
                     //moveImageView(step);
                     step++;
