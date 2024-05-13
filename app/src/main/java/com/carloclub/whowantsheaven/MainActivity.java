@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     Button button50;
     Button buttonRules;
     Button buttonLang;
+    Button buttonParam;
     TextView questionTextView;
     TextView stepTextView;
     ImageView imageView;
@@ -58,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
     boolean isUsedAdvise = false;
     boolean isUsedAI = false;
     Button buttonAI;
+    Dialog dialogParam;
+    Button buttonEasee;
+    Button buttonNorm;
+    Button buttonHide;
+    int Diff=3;
+    int MaxStep=15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
         buttonChange = findViewById(R.id.buttonChange);
         buttonAdvice = findViewById(R.id.buttonAdvice);
         buttonRules = findViewById(R.id.buttonRules);
+        buttonParam = findViewById(R.id.buttonParam);
         buttonLang = findViewById(R.id.buttonLang);
         lineLayout = findViewById(R.id.lineLayout);
         dialog = new Dialog(MainActivity.this);
@@ -87,11 +95,18 @@ public class MainActivity extends AppCompatActivity {
         dialogAI = new Dialog(MainActivity.this);
         dialogAI.setContentView(R.layout.dialog_ai);
         buttonAI = findViewById(R.id.buttonAI);
+        dialogParam = new Dialog(MainActivity.this);
+        dialogParam.setContentView(R.layout.dialog_params);
+        buttonEasee = dialogParam.findViewById(R.id.buttonEasee);
+        buttonNorm = dialogParam.findViewById(R.id.buttonNorm);
+        buttonHide = dialogParam.findViewById(R.id.buttonHide);
+
         initButtons();
         showStartMenu();
         timer = new Timer();
 //        moveImageView(0);
         initMediaPlayers();
+        Diff = sharedPreferences.getInt(Constants.CACHE_DIFF, Diff);
     }
 
     private void showStartMenu() {
@@ -209,12 +224,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         buttonRules.setOnClickListener(v -> showRules());
+        buttonParam.setOnClickListener(v -> showParams());
 
         buttonThank.setOnClickListener(v -> dialog.hide());
 
         Button buttonOK = dialogAI.findViewById(R.id.buttonAIOK);
         buttonOK.setOnClickListener(v -> dialogAI.hide());
         buttonLang.setOnClickListener(v -> changeLang());
+        buttonEasee.setOnClickListener(v -> {Diff=1; changeDiff();});
+        buttonNorm.setOnClickListener(v -> {Diff=2; changeDiff();});
+        buttonHide.setOnClickListener(v -> {Diff=3; changeDiff();});
+    }
+
+    void changeDiff(){
+        if (Diff==1)
+            MaxStep = 5;
+        else if (Diff==2)
+            MaxStep = 10;
+        else
+            MaxStep = 15;
+        dialogParam.hide();
+
+            sharedPreferences
+                    .edit()
+                    .putInt(Constants.CACHE_DIFF, Diff)
+                    .apply();
     }
 
     void changeLang(){
@@ -281,6 +315,46 @@ public class MainActivity extends AppCompatActivity {
                 .start();
     }
 
+    private void showParams() {
+        if (Diff==1)
+            buttonEasee.setBackgroundResource(R.drawable.rombgood);
+        else
+            buttonEasee.setBackgroundResource(R.drawable.romb);
+
+        if (Diff==2)
+            buttonNorm.setBackgroundResource(R.drawable.rombgood);
+        else
+            buttonNorm.setBackgroundResource(R.drawable.romb);
+
+        if (Diff==3)
+            buttonHide.setBackgroundResource(R.drawable.rombgood);
+        else
+            buttonHide.setBackgroundResource(R.drawable.romb);
+
+        //TextView startText = dialog.findViewById(R.id.startText);
+
+//        if (lang.equals(Constants.LANG_BY))
+//        {
+//            startText.setText(R.string.rule1_by);
+//            textViewFlag.setText(R.string.rule2_by);
+//            textViewBino.setText(R.string.rule3_by);
+//            textViewPhon.setText(R.string.rule4_by);
+//            textViewAisp.setText(R.string.rule5_by);
+//            overText.setText(R.string.rule6_by);
+//        }
+//        else
+//        {
+//            startText.setText(R.string.rule1);
+//            textViewFlag.setText(R.string.rule2);
+//            textViewBino.setText(R.string.rule3);
+//            textViewPhon.setText(R.string.rule4);
+//            textViewAisp.setText(R.string.rule5);
+//            overText.setText(R.string.rule6);
+//        }
+
+
+        dialogParam.show();
+    }
     private void showRules() {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_rules);
@@ -448,7 +522,7 @@ public class MainActivity extends AppCompatActivity {
                 if (isGameOver) {
                     step = 0;
                     showStartMenu();
-                } else if (step == Constants.QUIZ_SIZE) { //
+                } else if (step == MaxStep) { //
                     isGameOver = true;
                     step++;
                     if (lang.equals(Constants.LANG_RU)) {

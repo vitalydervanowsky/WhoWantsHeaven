@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/startText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Складанасць:"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/buttonEasee"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/romb"
+                android:text="Простая"
+                android:textColor="#F8F6F6"
+                android:textSize="@dimen/text_size_16sp"
+                android:textStyle="normal|bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lineLayout"
+                app:layout_constraintTop_toBottomOf="@id/questionTextView"
+                app:layout_goneMarginLeft="3dp" />
+
+            <Button
+                android:id="@+id/buttonNorm"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/romb"
+                android:text="Сярэдняя"
+                android:textColor="#F8F6F6"
+                android:textSize="@dimen/text_size_16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lineLayout"
+                app:layout_constraintTop_toBottomOf="@id/buttonAnswer2"
+                app:layout_goneMarginLeft="3dp" />
+
+            <Button
+                android:id="@+id/buttonHide"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="3dp"
+                android:background="@drawable/romb"
+                android:text="Высокая"
+                android:textColor="#F1F1ED"
+                android:textSize="@dimen/text_size_16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/lineLayout"
+                app:layout_constraintTop_toBottomOf="@id/buttonAnswer1"
+                app:layout_goneMarginLeft="3dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
