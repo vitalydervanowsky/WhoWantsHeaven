@@ -60,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
     boolean isUsedAI = false;
     Button buttonAI;
     Dialog dialogParam;
-    Button buttonEasee;
-    Button buttonNorm;
-    Button buttonHide;
-    int Diff=3;
-    int MaxStep=15;
+    Button buttonEasy;
+    Button buttonNormal;
+    Button buttonHard;
+    int Diff = 3;
+    int MaxStep = 15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
         buttonAI = findViewById(R.id.buttonAI);
         dialogParam = new Dialog(MainActivity.this);
         dialogParam.setContentView(R.layout.dialog_params);
-        buttonEasee = dialogParam.findViewById(R.id.buttonEasee);
-        buttonNorm = dialogParam.findViewById(R.id.buttonNorm);
-        buttonHide = dialogParam.findViewById(R.id.buttonHide);
+        buttonEasy = dialogParam.findViewById(R.id.buttonEasy);
+        buttonNormal = dialogParam.findViewById(R.id.buttonNormal);
+        buttonHard = dialogParam.findViewById(R.id.buttonHard);
 
         initButtons();
         showStartMenu();
@@ -119,19 +119,18 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer2.setVisibility(View.VISIBLE);
         buttonAnswer3.setVisibility(View.VISIBLE);
         buttonAnswer4.setVisibility(View.VISIBLE);
-        if (lang.equals(Constants.LANG_BY)) {
+        if (isBy()) {
             buttonAnswer1.setText(R.string.start_button_by);
             buttonAnswer2.setText(R.string.show_advise_button_by);
             buttonAnswer3.setText(R.string.write_review_button_by);
             buttonAnswer4.setText(R.string.exit_button_by);
-        //    questionTextView.setText(R.string.congratulations_by);
-        }
-        else {
+            //    questionTextView.setText(R.string.congratulations_by);
+        } else {
             buttonAnswer1.setText(R.string.start_button);
             buttonAnswer2.setText(R.string.show_advise_button);
             buttonAnswer3.setText(R.string.write_review_button);
             buttonAnswer4.setText(R.string.exit_button);
-         //   questionTextView.setText(R.string.congratulations);
+            //   questionTextView.setText(R.string.congratulations);
         }
     }
 
@@ -231,31 +230,40 @@ public class MainActivity extends AppCompatActivity {
         Button buttonOK = dialogAI.findViewById(R.id.buttonAIOK);
         buttonOK.setOnClickListener(v -> dialogAI.hide());
         buttonLang.setOnClickListener(v -> changeLang());
-        buttonEasee.setOnClickListener(v -> {Diff=1; changeDiff();});
-        buttonNorm.setOnClickListener(v -> {Diff=2; changeDiff();});
-        buttonHide.setOnClickListener(v -> {Diff=3; changeDiff();});
+        buttonEasy.setOnClickListener(v -> {
+            Diff = 1;
+            changeDiff();
+        });
+        buttonNormal.setOnClickListener(v -> {
+            Diff = 2;
+            changeDiff();
+        });
+        buttonHard.setOnClickListener(v -> {
+            Diff = 3;
+            changeDiff();
+        });
     }
 
-    void changeDiff(){
-        if (Diff==1)
-            MaxStep = 5;
-        else if (Diff==2)
-            MaxStep = 10;
+    private void changeDiff() {
+        if (Diff == 1)
+            MaxStep = Constants.QUIZ_SIZE_EASY;
+        else if (Diff == 2)
+            MaxStep = Constants.QUIZ_SIZE_NORMAL;
         else
-            MaxStep = 15;
+            MaxStep = Constants.QUIZ_SIZE_HARD;
         dialogParam.hide();
 
-            sharedPreferences
-                    .edit()
-                    .putInt(Constants.CACHE_DIFF, Diff)
-                    .apply();
+        sharedPreferences
+                .edit()
+                .putInt(Constants.CACHE_DIFF, Diff)
+                .apply();
     }
 
-    void changeLang(){
-        if (lang.equals(Constants.LANG_BY))
-            lang=Constants.LANG_RU;
+    private void changeLang() {
+        if (isBy())
+            lang = Constants.LANG_RU;
         else
-            lang=Constants.LANG_BY;
+            lang = Constants.LANG_BY;
         buttonLang.setText(lang);
         if (isGameOver)
             showStartMenu();
@@ -316,24 +324,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showParams() {
-        if (Diff==1)
-            buttonEasee.setBackgroundResource(R.drawable.rombgood);
+        if (Diff == 1)
+            buttonEasy.setBackgroundResource(R.drawable.rombgood);
         else
-            buttonEasee.setBackgroundResource(R.drawable.romb);
+            buttonEasy.setBackgroundResource(R.drawable.romb);
 
-        if (Diff==2)
-            buttonNorm.setBackgroundResource(R.drawable.rombgood);
+        if (Diff == 2)
+            buttonNormal.setBackgroundResource(R.drawable.rombgood);
         else
-            buttonNorm.setBackgroundResource(R.drawable.romb);
+            buttonNormal.setBackgroundResource(R.drawable.romb);
 
-        if (Diff==3)
-            buttonHide.setBackgroundResource(R.drawable.rombgood);
+        if (Diff == 3)
+            buttonHard.setBackgroundResource(R.drawable.rombgood);
         else
-            buttonHide.setBackgroundResource(R.drawable.romb);
+            buttonHard.setBackgroundResource(R.drawable.romb);
 
         //TextView startText = dialog.findViewById(R.id.startText);
 
-//        if (lang.equals(Constants.LANG_BY))
+//        if (isBy())
 //        {
 //            startText.setText(R.string.rule1_by);
 //            textViewFlag.setText(R.string.rule2_by);
@@ -355,6 +363,7 @@ public class MainActivity extends AppCompatActivity {
 
         dialogParam.show();
     }
+
     private void showRules() {
         Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.dialog_rules);
@@ -364,17 +373,14 @@ public class MainActivity extends AppCompatActivity {
         TextView textViewPhon = dialog.findViewById(R.id.textViewPhon);
         TextView textViewAisp = dialog.findViewById(R.id.textViewAisp);
         TextView overText = dialog.findViewById(R.id.overText);
-        if (lang.equals(Constants.LANG_BY))
-        {
+        if (isBy()) {
             startText.setText(R.string.rule1_by);
             textViewFlag.setText(R.string.rule2_by);
             textViewBino.setText(R.string.rule3_by);
             textViewPhon.setText(R.string.rule4_by);
             textViewAisp.setText(R.string.rule5_by);
             overText.setText(R.string.rule6_by);
-        }
-        else
-        {
+        } else {
             startText.setText(R.string.rule1);
             textViewFlag.setText(R.string.rule2);
             textViewBino.setText(R.string.rule3);
@@ -404,7 +410,7 @@ public class MainActivity extends AppCompatActivity {
         //dialog.setContentView(R.layout.dialog_advice);
         TextView textAdvice = dialog.findViewById(R.id.textAdvice);
         Button button = dialog.findViewById(R.id.buttonThank);
-        if (lang.equals(Constants.LANG_BY))
+        if (isBy())
             button.setText(R.string.thank_you_carlo_by);
         else
             button.setText(R.string.thank_you_carlo);
@@ -449,16 +455,16 @@ public class MainActivity extends AppCompatActivity {
         timer.schedule(timerDown, 1500, 1500);
         if (isGameOver) {
             incorrectMediaPlayer.start();
-            String text ;
+            String text;
             if (step == 1) {
-                if (lang.equals(Constants.LANG_BY)) {
+                if (isBy()) {
                     text = getString(R.string.final_text_for_first_attempt_by);
                 } else {
                     text = getString(R.string.final_text_for_first_attempt);
                 }
             } else {
                 int textRes;
-                if (lang.equals(Constants.LANG_BY)) {
+                if (isBy()) {
                     textRes = R.string.final_text_for_default_attempt_by;
                 } else {
                     textRes = R.string.final_text_for_default_attempt;
@@ -488,7 +494,7 @@ public class MainActivity extends AppCompatActivity {
         buttonAnswer2.setText(currentQuestion.answer2);
         buttonAnswer3.setText(currentQuestion.answer3);
         buttonAnswer4.setText(currentQuestion.answer4);
-        stepTextView.setText(getString(R.string.step_label, step, Constants.QUIZ_SIZE));
+        stepTextView.setText(getString(R.string.step_label, step, Constants.QUIZ_SIZE_HARD));
     }
 
     private void initMediaPlayers() {
@@ -498,6 +504,10 @@ public class MainActivity extends AppCompatActivity {
         if (incorrectMediaPlayer == null) {
             incorrectMediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
         }
+    }
+
+    private boolean isBy() {
+        return lang.equals(Constants.LANG_BY);
     }
 
     class TimerDown extends TimerTask {
@@ -525,18 +535,15 @@ public class MainActivity extends AppCompatActivity {
                 } else if (step == MaxStep) { //
                     isGameOver = true;
                     step++;
-                    if (lang.equals(Constants.LANG_RU)) {
-                        questionTextView.setText(R.string.final_text_for_success);
-                    } else {
+                    if (isBy()) {
                         questionTextView.setText(R.string.final_text_for_success_by);
+                    } else {
+                        questionTextView.setText(R.string.final_text_for_success);
                     }
                     showStartMenu();
-                    if (lang.equals(Constants.LANG_BY)) {
-
+                    if (isBy()) {
                         questionTextView.setText(R.string.congratulations_by);
-                    }
-                    else {
-
+                    } else {
                         questionTextView.setText(R.string.congratulations);
                     }
                 } else {

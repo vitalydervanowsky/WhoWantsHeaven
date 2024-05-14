@@ -6,5 +6,7 @@ public class Constants {
     public final static String CACHE_DIFF = "CACHE_DIFF";
     public final static String LANG_BY = "BY";
     public final static String LANG_RU = "RU";
-    public final static int QUIZ_SIZE = 15;
+    public final static int QUIZ_SIZE_EASY = 5;
+    public final static int QUIZ_SIZE_NORMAL = 10;
+    public final static int QUIZ_SIZE_HARD = 15;
 }

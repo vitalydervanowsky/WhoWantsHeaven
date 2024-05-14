@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,12 +24,11 @@
                 android:textSize="20sp" />
 
             <Button
-                android:id="@+id/buttonEasee"
+                android:id="@+id/buttonEasy"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginHorizontal="7dp"
                 android:layout_marginTop="3dp"
-                android:layout_marginRight="3dp"
                 android:background="@drawable/romb"
                 android:text="Простая"
                 android:textColor="#F8F6F6"
@@ -43,12 +40,11 @@
                 app:layout_goneMarginLeft="3dp" />
 
             <Button
-                android:id="@+id/buttonNorm"
+                android:id="@+id/buttonNormal"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginHorizontal="7dp"
                 android:layout_marginTop="3dp"
-                android:layout_marginRight="3dp"
                 android:background="@drawable/romb"
                 android:text="Сярэдняя"
                 android:textColor="#F8F6F6"
@@ -60,12 +56,11 @@
                 app:layout_goneMarginLeft="3dp" />
 
             <Button
-                android:id="@+id/buttonHide"
+                android:id="@+id/buttonHard"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginLeft="7dp"
+                android:layout_marginHorizontal="7dp"
                 android:layout_marginTop="3dp"
-                android:layout_marginRight="3dp"
                 android:background="@drawable/romb"
                 android:text="Высокая"
                 android:textColor="#F1F1ED"

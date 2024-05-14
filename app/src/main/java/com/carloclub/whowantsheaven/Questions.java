@@ -9,8 +9,9 @@ public class Questions {
     int N = 6;
 
     public Questions() {
-        byQuestions = new Question[Constants.QUIZ_SIZE][N];
-        ruQuestions = new Question[Constants.QUIZ_SIZE][N];
+        int size = Constants.QUIZ_SIZE_HARD;
+        byQuestions = new Question[size][N];
+        ruQuestions = new Question[size][N];
         createQuestions();
     }
 
