@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/mb">
 
+    <ImageView
+        android:id="@+id/imageE"
+        android:layout_width="145dp"
+        android:layout_height="115dp"
+        android:elevation="@dimen/elevation_16dp"
+        android:importantForAccessibility="no"
+        android:src="@drawable/heavennew2"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/lineLayout"
         android:layout_width="55dp"
@@ -405,6 +416,7 @@
         android:id="@+id/questionTextView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="50dp"
         android:layout_weight="1"
         android:background="#00F6E7E7"
         android:gravity="center|center_horizontal"

@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     private MediaPlayer correctMediaPlayer;
     private MediaPlayer incorrectMediaPlayer;
+    private MediaPlayer triumfMediaPlayer;
 
     boolean isUsedChange = false;
     boolean isUsed50 = false;
@@ -107,6 +108,8 @@ public class MainActivity extends AppCompatActivity {
 //        moveImageView(0);
         initMediaPlayers();
         Diff = sharedPreferences.getInt(Constants.CACHE_DIFF, Diff);
+        if (Diff==0) Diff=3;
+        changeDiff();
     }
 
     private void showStartMenu() {
@@ -283,6 +286,7 @@ public class MainActivity extends AppCompatActivity {
     private void startGame() {
         findViewById(R.id.MainLayout).setBackground(ContextCompat.getDrawable(this, R.drawable.heaven));
         lineLayout.setVisibility(View.VISIBLE);
+        findViewById(R.id.imageE).setVisibility(View.VISIBLE);
         isUsedChange = false;
         buttonChange.setVisibility(View.VISIBLE);
         buttonChange.setBackground(ContextCompat.getDrawable(this, R.drawable.flag));
@@ -499,10 +503,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void initMediaPlayers() {
         if (correctMediaPlayer == null) {
-            correctMediaPlayer = MediaPlayer.create(this, R.raw.correct);
+            correctMediaPlayer = MediaPlayer.create(this, R.raw.ok);
         }
         if (incorrectMediaPlayer == null) {
-            incorrectMediaPlayer = MediaPlayer.create(this, R.raw.incorrect);
+            incorrectMediaPlayer = MediaPlayer.create(this, R.raw.error);
+        }
+        if (triumfMediaPlayer == null) {
+            triumfMediaPlayer = MediaPlayer.create(this, R.raw.triumf);
         }
     }
 
@@ -546,6 +553,7 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         questionTextView.setText(R.string.congratulations);
                     }
+                    triumfMediaPlayer.start();
                 } else {
                     //moveImageView(step);
                     step++;

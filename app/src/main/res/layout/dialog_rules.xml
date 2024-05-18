@@ -19,10 +19,10 @@
             <TextView
                 android:id="@+id/startText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="123dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="@string/rule1_by"
-                android:textSize="20sp" />
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,6 +32,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -44,18 +45,18 @@
 
                     <TextView
                         android:id="@+id/textViewFlag"
-                        android:layout_width="match_parent"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="64dp"
-                        android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="@string/rule2_by"
-                        android:textSize="20sp" />
+                        android:textSize="17sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -68,18 +69,18 @@
 
                     <TextView
                         android:id="@+id/textViewBino"
-                        android:layout_width="match_parent"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="64dp"
-                        android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="@string/rule3_by"
-                        android:textSize="20sp" />
+                        android:textSize="17sp" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -92,13 +93,12 @@
 
                     <TextView
                         android:id="@+id/textViewPhon"
-                        android:layout_width="match_parent"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="64dp"
-                        android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="@string/rule4_by"
-                        android:textSize="20sp" />
+                        android:textSize="17sp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -116,22 +116,21 @@
 
                     <TextView
                         android:id="@+id/textViewAisp"
-                        android:layout_width="match_parent"
+                        android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="64dp"
-                        android:layout_weight="1"
                         android:gravity="center_horizontal|center_vertical"
                         android:text="@string/rule5_by"
-                        android:textSize="20sp" />
+                        android:textSize="17sp" />
                 </LinearLayout>
 
                 <TextView
                     android:id="@+id/overText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="192dp"
                     android:gravity="center_horizontal|center_vertical"
                     android:text="@string/rule6_by"
-                    android:textSize="20sp" />
+                    android:textSize="17sp" />
             </LinearLayout>
 
         </LinearLayout>
